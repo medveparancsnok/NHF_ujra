@@ -5,13 +5,14 @@
 #include <SFML/Graphics.hpp>
 #include "Jatekmenet.h"
 #include "Ablak.h"
+#include "Jatekmenet_grafika.h"
 
 
 class App {
     Jatekmenet jatekmenet;
-    Ablak ablak;
+    Jatekmenet_grafika jatekmenet_grafika;
+    sf::RenderWindow ablak;
 public:
-    App();
 
     void Init();
 

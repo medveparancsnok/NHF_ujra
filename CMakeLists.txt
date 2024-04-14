@@ -4,8 +4,8 @@ project(NHF_ujra)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(NHF_ujra
-        App.cpp
-        App.h
+        Alkalmazas.cpp
+        Alkalmazas.h
         Jatek.cpp
         Jatek.h
         Menu.cpp
@@ -22,10 +22,10 @@ add_executable(NHF_ujra
         Mezo_grafika.h
         Palya_grafika.cpp
         Palya_grafika.h
-        Ablak.cpp
-        Ablak.h
         Jatekmenet.cpp
         Jatekmenet.h
+        Jatekmenet_grafika.cpp
+        Jatekmenet_grafika.h
 )
 
 
