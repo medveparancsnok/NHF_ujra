@@ -1,23 +1,20 @@
 
 
-#ifndef NHF_UJRA_APP_H
-#define NHF_UJRA_APP_H
-#include <SFML/Graphics.hpp>
-#include "Jatekmenet.h"
-#include "Ablak.h"
-#include "Jatekmenet_grafika.h"
+#ifndef NHF_UJRA_ALKALMAZAS_H
+#define NHF_UJRA_ALKALMAZAS_H
+#include "FoMenu.h"
 
 
-class App {
-    Jatekmenet jatekmenet;
-    Jatekmenet_grafika jatekmenet_grafika;
+
+class Alkalmazas {
     sf::RenderWindow ablak;
+    std::stack<Menu *> stack;
+    sf::Font font;
 public:
-
-    void Init();
+    Alkalmazas();
 
     void Run();
 };
 
 
-#endif //NHF_UJRA_APP_H
+#endif //NHF_UJRA_ALKALMAZAS_H

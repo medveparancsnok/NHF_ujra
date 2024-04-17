@@ -1,44 +1,22 @@
 cmake_minimum_required(VERSION 3.24)
-project(NHF_ujra)
+project(NHF)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
-add_executable(NHF_ujra
-        Alkalmazas.cpp
-        Alkalmazas.h
-        Jatek.cpp
-        Jatek.h
-        Menu.cpp
-        Menu.h
-        Palya.cpp
-        Palya.h
-        Mezo.cpp
-        Mezo.h
-        Jatek_grafika.cpp
-        Jatek_grafika.h
-        Menu_grafika.cpp
-        Menu_grafika.h
-        Mezo_grafika.cpp
-        Mezo_grafika.h
-        Palya_grafika.cpp
-        Palya_grafika.h
-        Jatekmenet.cpp
-        Jatekmenet.h
-        Jatekmenet_grafika.cpp
-        Jatekmenet_grafika.h
+add_executable(NHF main.cpp
+        megjelenites_kiegeszites.cpp
+        FoMenu.cpp
+        main.cpp
 )
 
 
-
-target_compile_options(NHF_ujra
+target_compile_options(NHF
         PRIVATE
         -Werror -Wall -Wextra -Wpedantic -Wconversion
 )
-
-
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR D:/SFML/SFML-2.6.1/lib/cmake/SFML)
 find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
 
-target_link_libraries(NHF_ujra sfml-system sfml-window sfml-graphics sfml-audio)
+target_link_libraries(NHF sfml-system sfml-window sfml-graphics sfml-audio)

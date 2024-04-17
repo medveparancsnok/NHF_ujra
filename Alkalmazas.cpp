@@ -1,27 +1,31 @@
 
-
 #include "Alkalmazas.h"
 
-
-void App::Init() {
-    jatekmenet.init();
-
+Alkalmazas::Alkalmazas():ablak(sf::VideoMode(800,600), "Aknakereso", sf::Style::Default) {
+    font.loadFromFile("arial.ttf");
+    FoMenu fomenu(stack, font);
+    stack.push(&fomenu);
 }
 
-void App::Run(){
-    Init();
-
-    sf::Event esemeny;
+void Alkalmazas::Run(){
 
     while(ablak.isOpen()){
+        sf::Event esemeny;
         while(ablak.pollEvent(esemeny)){
             if(esemeny.type == sf::Event::Closed){
+                while(!stack.empty()){
+                    stack.pop();
+                }
                 ablak.close();
             }
-            if(esemeny.type == sf::Event::MouseButtonPressed){
-                jatekmenet.esemenylekezel(esemeny);
+            else{
+                stack.top()->esemeny_kezel(esemeny);
             }
         }
-        jatekmenet_grafika.megjelenit(ablak);
     }
+    ablak.clear(sf::Color(192, 192, 192));
+
+    stack.top()->megjelenit(ablak);
+
+    ablak.display();
 }
