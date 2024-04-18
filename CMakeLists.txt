@@ -4,9 +4,11 @@ project(NHF)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(NHF main.cpp
-        megjelenites_kiegeszites.cpp
         FoMenu.cpp
         main.cpp
+        matematikai_fuggvenyek.h
+        MenuFelirat.cpp
+        Alkalmazas.cpp
 )
 
 

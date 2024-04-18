@@ -12,6 +12,9 @@ public:
     virtual void esemeny_kezel(sf::Event& esmemeny) = 0;
 
     virtual void megjelenit(sf::RenderWindow& target) = 0;
+
+    virtual ~Menu(){}
+
 };
 
 #endif //NHF_UJRA_MENU_H

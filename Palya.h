@@ -7,24 +7,32 @@
 
 #include "Bomba.h"
 #include "Mezo.h"
+#include "Ures.h"
 #include <array>
 #include "Nehezseg.h"
+#include "Jatekallapot.h"
+#include "Random.h"
+#include "Jatekallapot.h"
 
 
 class Palya {
-    const static int size = 14;
+    const static int nagysag = 14;
     sf::Sprite flagSprite;
     sf::Sprite bombaSprite;
-    std::array<std::array<Mezo*, size>, size> mezok;
+    sf::RectangleShape mezo_alap;
+    std::array<std::array<Mezo*, nagysag>, nagysag> mezok;
+    int ures_mezok;
+    bool felrobbant;
 public:
     Palya(Nehezseg nehezseg);
-    void esemeny_kezel(sf::Event event) {
 
-    }
+    void ures_mezo_csokkent();
 
-    void megjelenit(sf::RenderTarget *target) {
+    void felrobbant_a_jatek();
 
-    }
+    JatekAllapot esemeny_kezel(sf::Event& event);
+
+    void megjelenit(sf::RenderWindow& target);
 
     bool jatek_vege() const;
 

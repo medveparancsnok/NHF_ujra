@@ -7,17 +7,14 @@
 #include "Mezo.h"
 
 
-class Bomba: public  {
+class Bomba: public Mezo {
     sf::Sprite bomba_sprite;
 public:
-    void megjelenit(sf::RenderTarget *target) override {
-        Mezo::megjelenit(target);
+    Bomba(Palya& palya, const sf::Sprite& m_flag, const sf::RectangleShape& m_alap, const sf::Sprite& bomba_sprite, MezoAllapot kezdo = felfedetlen) : Mezo(palya, m_flag, m_alap, kezdo), bomba_sprite(bomba_sprite){}
 
-        if (felfedett_e()) {
-            target->draw(bomba_sprite);
-        }
-    }
+    void megjelenit(sf::RenderTarget *target) override;
 
+    void ramleptel() override;
 };
 
 

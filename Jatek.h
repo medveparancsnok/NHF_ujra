@@ -10,27 +10,28 @@
 #include <stack>
 #include "Nehezseg.h"
 #include <SFML/Graphics.hpp>
+#include "Jatekallapot.h"
+#include "JatekFelirat.h"
+#include "matematikai_fuggvenyek.h"
 
 
 class Jatek: public Menu{
-private:
-    bool jatek_vege;
-    Palya palya;
     std::stack<Menu *> &m_stack;
-    sf::Font font;
+    JatekAllapot jatekallapot;
+    Palya palya;
+    JatekFelirat vissza;
+    JatekFelirat vege;
+    sf::Font& font;
 public:
-    explicit Jatek(Nehezseg nehezseg);
+    Jatek(std::stack<Menu *>& m_stack, Nehezseg nehezseg, sf::Font& f);
 
-    void esemeny_kezel(sf::Event esemeny) override {
-        jatek_vege = palya.jatek_vege();
-        if (!jatek_vege) {
-            //...
-        }
-    }
+    void esemeny_kezel(sf::Event& esemeny) override;
 
-    void megjelenit(sf::RenderTarget *target, const sf::Font font) override;
+    void megjelenit(sf::RenderWindow& target) override;
 
+    void vege_megjelenit(sf::RenderWindow& target);
 
+    void jatek_vege_megjelenit(sf::RenderWindow& target);
 };
 
 

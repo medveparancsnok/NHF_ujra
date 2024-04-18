@@ -1,31 +1,48 @@
 
 #include "Alkalmazas.h"
+#include <iostream>
 
 Alkalmazas::Alkalmazas():ablak(sf::VideoMode(800,600), "Aknakereso", sf::Style::Default) {
+    ablak.setFramerateLimit(60);
     font.loadFromFile("arial.ttf");
-    FoMenu fomenu(stack, font);
-    stack.push(&fomenu);
+    FoMenu *fomenu = new FoMenu(stack, font);
+    stack.push(fomenu);
 }
 
 void Alkalmazas::Run(){
 
+
     while(ablak.isOpen()){
         sf::Event esemeny;
         while(ablak.pollEvent(esemeny)){
-            if(esemeny.type == sf::Event::Closed){
-                while(!stack.empty()){
-                    stack.pop();
+            switch (esemeny.type) {
+                case sf::Event::Closed:{
+                    while(!stack.empty()){
+                        delete stack.top();
+                        stack.pop();
+                    }
+                    ablak.close();
                 }
-                ablak.close();
-            }
-            else{
-                stack.top()->esemeny_kezel(esemeny);
+                break;
+                case sf::Event::MouseButtonPressed:{
+                    stack.top()->esemeny_kezel(esemeny);
+                }
+                break;
+                default:{}
+                break;
             }
         }
+
+        ablak.clear(sf::Color(192, 192, 192));
+
+        if(!stack.empty()) {
+            stack.top()->megjelenit(ablak);
+        }
+
+        ablak.display();
+
+
     }
-    ablak.clear(sf::Color(192, 192, 192));
 
-    stack.top()->megjelenit(ablak);
 
-    ablak.display();
 }

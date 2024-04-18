@@ -2,7 +2,7 @@
 
 #ifndef NHF_UJRA_CONSOLE_H
 #define NHF_UJRA_CONSOLE_H
-#include "Megjelenito.h"
+#include "nem_használt/Megjelenito.h"
 
 class Konzol : public Megjelenito {
 };

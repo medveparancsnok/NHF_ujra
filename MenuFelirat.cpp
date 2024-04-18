@@ -2,12 +2,12 @@
 // Created by Otthon on 2024. 04. 15..
 //
 
-#include "SajatFelirat.h"
+#include "MenuFelirat.h"
 
-SajatFelirat::SajatFelirat(const sf::Font &f, const std::string &cimke, const unsigned int &CharSize,
-                           const sf::Color &c, const sf::Vector2<float> &szoveg_pos, const sf::Text::Style &stil,
-                           sf::Vector2f size, sf::Vector2f hatter_pos, sf::Color c_fill, sf::Color o_fill,
-                           float thickness) {
+ MenuFelirat::MenuFelirat(const sf::Font &f, const std::string &cimke, const unsigned int &CharSize,
+                          const sf::Color &c, const sf::Vector2<float> &szoveg_pos, const sf::Text::Style &stil,
+                          sf::Vector2f size, sf::Vector2f hatter_pos, sf::Color c_fill, sf::Color o_fill,
+                          float thickness) {
     szoveg.setFont(f);
     szoveg.setString(cimke);
     szoveg.setCharacterSize(CharSize);
@@ -22,7 +22,7 @@ SajatFelirat::SajatFelirat(const sf::Font &f, const std::string &cimke, const un
     hatter.setOutlineThickness(thickness);;
 }
 
-void SajatFelirat::megjelenit(sf::RenderWindow& target){
+void MenuFelirat::megjelenit(sf::RenderWindow& target){
     target.draw(hatter);
     target.draw(szoveg);
 }
