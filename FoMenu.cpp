@@ -12,10 +12,10 @@ void FoMenu::esemeny_kezel(sf::Event& esemeny){
             m_stack.push(new Jatek(m_stack, konnyu, font));
         }
         if (kozepesen_belul(esemeny.mouseButton.x,esemeny.mouseButton.y)) {
-            m_stack.push(new Jatek(kozepes));
+            m_stack.push(new Jatek(m_stack, kozepes, font));
         }
         if (nehezen_belul(esemeny.mouseButton.x,esemeny.mouseButton.y)) {
-            m_stack.push(new Jatek(nehez));
+            m_stack.push(new Jatek(m_stack, nehez, font));
         }
     }
     else{

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.24)
 project(NHF)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 
 add_executable(NHF main.cpp
         FoMenu.cpp
@@ -9,6 +9,16 @@ add_executable(NHF main.cpp
         matematikai_fuggvenyek.h
         MenuFelirat.cpp
         Alkalmazas.cpp
+        Bomba.cpp
+        JatekFelirat.cpp
+        Jatek.cpp
+        grafikai_fuggvenyek.cpp
+        Menu.cpp
+        Mezo.cpp
+        Palya.cpp
+        Ures.cpp
+        Random.cpp
+        matematikai_fuggvenyek.cpp
 )
 
 

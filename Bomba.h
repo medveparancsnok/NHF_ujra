@@ -9,10 +9,11 @@
 
 class Bomba: public Mezo {
     sf::Sprite bomba_sprite;
+    bool& felrobbant;
 public:
-    Bomba(Palya& palya, const sf::Sprite& m_flag, const sf::RectangleShape& m_alap, const sf::Sprite& bomba_sprite, MezoAllapot kezdo = felfedetlen) : Mezo(palya, m_flag, m_alap, kezdo), bomba_sprite(bomba_sprite){}
+    Bomba(bool& felrobbant, sf::Sprite& bomba_sprite, sf::Sprite& m_flag, sf::RectangleShape& m_alap, MezoAllapot kezdo = felfedetlen) : Mezo(m_flag, m_alap, kezdo), bomba_sprite(bomba_sprite), felrobbant(felrobbant){}
 
-    void megjelenit(sf::RenderTarget *target) override;
+    void megjelenit(sf::RenderWindow& target) const override;
 
     void ramleptel() override;
 };

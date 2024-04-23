@@ -1,16 +1,16 @@
+#include <SFML/Graphics.hpp>
 
-inline bool konnyun_belul(int x, int y){
-    return x <=550 && x >= 250 && y <= 215 && y >= 140;
-}
 
-inline bool kozepesen_belul(int x, int y){
-    return x <=550 && x >= 250 && y <= 345 && y >= 270;
-}
+ bool konnyun_belul(int x, int y);
 
-inline bool nehezen_belul(int x, int y){
-    return x <=550 && x >= 250 && y <= 475 && y >= 400;
-}
+bool kozepesen_belul(int x, int y);
 
-inline bool vissza_lep(sf::Event& e){
-    return e.mouseButton.x >= 0 && e.mouseButton.x <=90 &&e.mouseButton.y >= 570 && e.mouseButton.y <= 600;
-}
+bool nehezen_belul(int x, int y);
+
+bool vissza_lep(sf::Event& e);
+
+bool palyan_belul(int x, int y);
+
+size_t eger_lekepezes(size_t mit, size_t eltolas, size_t mennyivel);
+
+bool valid_idx(int idx);

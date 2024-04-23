@@ -18,7 +18,6 @@ void Alkalmazas::Run(){
             switch (esemeny.type) {
                 case sf::Event::Closed:{
                     while(!stack.empty()){
-                        delete stack.top();
                         stack.pop();
                     }
                     ablak.close();

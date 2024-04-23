@@ -1,13 +1,9 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
-inline sf::Sprite sprite_betolt(const std::string& nev){
-    sf::Sprite betoltendo;
+void sprite_betolt(sf::Sprite& sprite, const std::string& nev);
 
-    sf::Texture textura;
-    if(!textura.loadFromFile("Flag.png")){
-    }
-    betoltendo.setTexture(textura);
-    betoltendo.setTextureRect(sf::IntRect(0,0, 40, 40));
+void textura_betolt(sf::Texture& textura, const std::string& nev);
 
-    return betoltendo;
-}
+sf::RectangleShape negyzet_betolt();
+

@@ -13,29 +13,32 @@
 #include "Jatekallapot.h"
 #include "Random.h"
 #include "Jatekallapot.h"
+#include "matematikai_fuggvenyek.h"
+#include <iostream>
+
+class Mezo;
 
 
 class Palya {
-    const static int nagysag = 14;
-    sf::Sprite flagSprite;
-    sf::Sprite bombaSprite;
-    sf::RectangleShape mezo_alap;
-    std::array<std::array<Mezo*, nagysag>, nagysag> mezok;
+    std::array<std::array<Mezo*, 14>, 14> mezok;
+    std::array<std::array<bool, 14>,14> eloszlas;
     int ures_mezok;
     bool felrobbant;
+    sf::Sprite flagSprite;
+    sf::Texture flagTextura;
+    sf::Sprite bombaSprite;
+    sf::Texture bombaTextura;
+    sf::RectangleShape mezo_alap;
+    sf::Font& font;
+
 public:
-    Palya(Nehezseg nehezseg);
-
-    void ures_mezo_csokkent();
-
-    void felrobbant_a_jatek();
+    Palya(Nehezseg nehezseg, sf::Font& font);
 
     JatekAllapot esemeny_kezel(sf::Event& event);
 
     void megjelenit(sf::RenderWindow& target);
 
-    bool jatek_vege() const;
-
+    ~Palya();
 };
 
 

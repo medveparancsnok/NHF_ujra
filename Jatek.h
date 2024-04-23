@@ -1,6 +1,4 @@
-//
-// Created by Otthon on 2024. 04. 16..
-//
+
 
 #ifndef NHF_UJRA_JATEK_H
 #define NHF_UJRA_JATEK_H
@@ -28,8 +26,6 @@ public:
     void esemeny_kezel(sf::Event& esemeny) override;
 
     void megjelenit(sf::RenderWindow& target) override;
-
-    void vege_megjelenit(sf::RenderWindow& target);
 
     void jatek_vege_megjelenit(sf::RenderWindow& target);
 };

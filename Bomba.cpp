@@ -3,13 +3,14 @@
 #include "Bomba.h"
 
 
-void Bomba::megjelenit(sf::RenderTarget *target)    {
+void Bomba::megjelenit(sf::RenderWindow& target) const{
     Mezo::megjelenit(target);
-    if(felfedett){
-        target->draw(bomba_sprite);
+    if(m_allapot == felfedett){
+        target.draw(m_alap);
+        target.draw(bomba_sprite);
     }
 }
 
 void Bomba::ramleptel() {
-
+    felrobbant = true;
 }

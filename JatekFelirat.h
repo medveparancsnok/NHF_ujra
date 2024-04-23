@@ -16,7 +16,9 @@ public:
 
     void setString(std::string cimke);
 
-    void setPosition(const float& x,const float& y);
+    void setPosition(const sf::Vector2f& v);
+
+    std::string getString() const;
 };
 
 

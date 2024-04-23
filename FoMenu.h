@@ -13,7 +13,7 @@
 
 class FoMenu : public Menu{
     std::stack<Menu *> &m_stack;
-    sf::Font font;
+    sf::Font& font;
     MenuFelirat cim;
     MenuFelirat konnyu_text;
     MenuFelirat kozepes_text;
@@ -21,7 +21,7 @@ class FoMenu : public Menu{
 
 
 public:
-    explicit FoMenu(std::stack<Menu *> &stack,const sf::Font& font) : m_stack(stack), font(font),
+    explicit FoMenu(std::stack<Menu *> &stack, sf::Font& font) : m_stack(stack), font(font),
     cim(font ,"Valaszd ki a nehezseget", 40, sf::Color::Black, sf::Vector2<float>(175,10), sf::Text::Bold, sf::Vector2f(300, 75),sf::Vector2f(250, 140), sf::Color(192, 192, 192)),
     konnyu_text(font, "KONNYU", 40, sf::Color::Black, sf::Vector2f(313.5,154.5), sf::Text::Bold,sf::Vector2f(300, 75),sf::Vector2f(250, 140), sf::Color::Green),
     kozepes_text(font, "KOZEPES", 40, sf::Color::Black, sf::Vector2f(303.5,283.5), sf::Text::Bold,sf::Vector2f(300, 75),sf::Vector2f(250, 270), sf::Color(255,152,0)),
