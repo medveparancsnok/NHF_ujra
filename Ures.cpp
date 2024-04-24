@@ -30,7 +30,7 @@ void Ures::megjelenit(sf::RenderWindow& target) const{
     }
 }
 
-void Ures::setSzomszedok(std::vector<Mezo*>& vektor, std::array<std::array<Mezo*, 14>, 14>& mezok) {
+void Ures::setSzomszedok(std::vector<Mezo*>& vektor,const std::array<std::array<Mezo*, 14>, 14>& mezok) {
     bomba_szomszedok = 0;
 
     int x = (int)eger_lekepezes((size_t)m_alap.getPosition().x, 10, 40);

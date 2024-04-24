@@ -71,7 +71,7 @@ Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
         for (unsigned long long j = 0; j < 14; j++) {
             if(mezok[i][j] == NULL){
                 mezok[i][j] = new Ures(ures_mezok, flagSprite, mezo_alap,font);
-                Ures* ures = static_cast<Ures*>(mezok[i][j]);
+                Ures* ures = dynamic_cast<Ures*>(mezok[i][j]);
                 ures->setSzomszedok(vektor, mezok);
             }
         }
@@ -89,8 +89,8 @@ void Palya::megjelenit(sf::RenderWindow &target) {
 }
 JatekAllapot Palya::esemeny_kezel(sf::Event &esemeny) {
     if(palyan_belul(esemeny.mouseButton.x, esemeny.mouseButton.y)){
-        size_t i = eger_lekepezes(esemeny.mouseButton.y, 10, 40);
-        size_t j = eger_lekepezes(esemeny.mouseButton.x, 120, 40);
+        size_t i = eger_lekepezes((size_t)esemeny.mouseButton.y, 10, 40);
+        size_t j = eger_lekepezes((size_t)esemeny.mouseButton.x, 120, 40);
         mezok[i][j]->esemeny_kezel(esemeny);
     }
     if(ures_mezok == 0){

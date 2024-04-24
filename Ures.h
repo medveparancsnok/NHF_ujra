@@ -7,6 +7,7 @@
 
 #include "Mezo.h"
 #include "JatekFelirat.h"
+#include <array>
 
 
 
@@ -19,7 +20,7 @@ class Ures: public Mezo {
 public:
     Ures(int& ures_mezok, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
 
-    void setSzomszedok(std::vector<Mezo*>& vektor, std::array<std::array<Mezo*, 14>, 14>& mezok);
+    void setSzomszedok(std::vector<Mezo*>& vektor,const std::array<std::array<Mezo*, 14>, 14>& mezok);
 
     void ramleptel() override;
 
