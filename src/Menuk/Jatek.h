@@ -6,10 +6,10 @@
 #include "Menu.h"
 #include "../Palya/Palya.h"
 #include <stack>
-#include "../Segedosztalyok/Grafikai/Enumok/Nehezseg.h"
+#include "../Segedosztalyok/Enumok/Nehezseg.h"
 #include <SFML/Graphics.hpp>
-#include "../Segedosztalyok/Grafikai/Enumok/Jatekallapot.h"
-#include "../Grafikus_segedosztalyok/JatekFelirat.h"
+#include "../Segedosztalyok/Enumok/Jatekallapot.h"
+#include "../Segedosztalyok/Grafikai/JatekFelirat.h"
 #include "../onallo_logikai/matematikai_fuggvenyek.h"
 
 

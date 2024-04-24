@@ -4,7 +4,7 @@
 
 #ifndef NHF_UJRA_MEZO_H
 #define NHF_UJRA_MEZO_H
-#include "../Segedosztalyok/Grafikai/Enumok/MezoAllapot.h"
+#include "../Segedosztalyok/Enumok/MezoAllapot.h"
 #include <SFML/Graphics.hpp>
 #include <optional>
 #include "../onallo_logikai/matematikai_fuggvenyek.h"

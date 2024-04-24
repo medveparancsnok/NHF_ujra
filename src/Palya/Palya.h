@@ -9,10 +9,10 @@
 #include "../Mezok/Mezo.h"
 #include "../Mezok/Ures.h"
 #include <array>
-#include "../Segedosztalyok/Grafikai/Enumok/Nehezseg.h"
-#include "../Segedosztalyok/Grafikai/Enumok/Jatekallapot.h"
+#include "../Segedosztalyok/Enumok/Nehezseg.h"
+#include "../Segedosztalyok/Enumok/Jatekallapot.h"
 #include "Random/palya_feltoltes/Random.h"
-#include "../Segedosztalyok/Grafikai/Enumok/Jatekallapot.h"
+#include "../Segedosztalyok/Enumok/Jatekallapot.h"
 #include "../onallo_logikai/matematikai_fuggvenyek.h"
 #include <iostream>
 
