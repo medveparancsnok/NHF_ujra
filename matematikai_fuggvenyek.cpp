@@ -20,8 +20,8 @@ bool palyan_belul(int x, int y){
     return x >= 120 && x <= 680 && y >= 20 && y <= 580;
 }
 
-size_t eger_lekepezes(size_t mit, size_t eltolas, size_t mennyivel){
-    return ((mit-eltolas) / mennyivel);
+unsigned long long eger_lekepezes(int mit, int eltolas, int mennyivel){
+    return (unsigned long long)((mit-eltolas) / mennyivel);
 }
 
 bool valid_idx(int idx){

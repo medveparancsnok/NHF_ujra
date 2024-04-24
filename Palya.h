@@ -21,7 +21,6 @@ class Mezo;
 
 class Palya {
     std::array<std::array<Mezo*, 14>, 14> mezok;
-    std::array<std::array<bool, 14>,14> eloszlas;
     int ures_mezok;
     bool felrobbant;
     sf::Sprite flagSprite;
@@ -38,8 +37,12 @@ public:
 
     void megjelenit(sf::RenderWindow& target);
 
+    //size_t szomszedok_meghataroz(const std::vector<Mezo*>& vektor, int i, int j);
+
     ~Palya();
 };
+
+
 
 
 #endif //NHF_UJRA_PALYA_H

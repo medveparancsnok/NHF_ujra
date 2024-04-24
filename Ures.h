@@ -13,12 +13,14 @@
 
 class Ures: public Mezo {
     int& ures_mezok;
+    size_t bomba_szomszedok;
+    unsigned long long sor;
+    unsigned long long oszlop;
     sf::Font& font;
     JatekFelirat szomszedok;
-    size_t bomba_szomszedok;
 
 public:
-    Ures(int& ures_mezok, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
+    Ures(int& ures_mezok,unsigned long long sor,unsigned long long oszlop, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
 
     void setSzomszedok(std::vector<Mezo*>& vektor,const std::array<std::array<Mezo*, 14>, 14>& mezok);
 

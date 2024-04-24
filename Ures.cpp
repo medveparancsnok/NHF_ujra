@@ -2,8 +2,8 @@
 
 #include "Ures.h"
 
-Ures::Ures(int& ures_mezok,  sf::Sprite &m_flag, sf::RectangleShape &m_alap, sf::Font &font,
-           MezoAllapot kezdo): Mezo(m_flag, m_alap, kezdo), ures_mezok(ures_mezok), font(font), szomszedok(font, "0",20, sf::Color::Black, sf::Vector2f(0,0), sf::Text::Bold){}
+Ures::Ures(int& ures_mezok,unsigned long long sor, unsigned long long oszlop, sf::Sprite &m_flag, sf::RectangleShape &m_alap, sf::Font &font,
+           MezoAllapot kezdo): Mezo(m_flag, m_alap, kezdo), ures_mezok(ures_mezok),sor(sor), oszlop(oszlop) , font(font), szomszedok(font, "0",20, sf::Color::Black, sf::Vector2f(0,0), sf::Text::Bold){}
 
 
 void Ures::ramleptel() {
@@ -33,40 +33,39 @@ void Ures::megjelenit(sf::RenderWindow& target) const{
 void Ures::setSzomszedok(std::vector<Mezo*>& vektor,const std::array<std::array<Mezo*, 14>, 14>& mezok) {
     bomba_szomszedok = 0;
 
-    int x = (int)eger_lekepezes((size_t)m_alap.getPosition().x, 10, 40);
-    int y = (int)eger_lekepezes((size_t)m_alap.getPosition().y, 120, 40);
+    int uj_x = (int)sor;
+    int uj_y = (int)oszlop;
 
-    if (valid_idx(x - 1) && valid_idx(y - 1) && Eleme(vektor, mezok[x-1][y-1])) {
+    if (valid_idx(uj_x - 1) && valid_idx(uj_y - 1) && Eleme(vektor,  mezok[sor - 1][oszlop - 1])) {
         bomba_szomszedok++;
     }
 
-    if (valid_idx(x - 1) && valid_idx(y) && Eleme(vektor, mezok[x-1][y])) {
+    if (valid_idx(uj_x - 1) && valid_idx(uj_y) && Eleme(vektor, mezok[sor-1][oszlop])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(x - 1) && valid_idx(y + 1) && Eleme(vektor, mezok[x-1][y+1])) {
+    if (valid_idx(uj_x - 1) && valid_idx(uj_y + 1) && Eleme(vektor, mezok[sor-1][oszlop+1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(x) && valid_idx(y - 1) && Eleme(vektor, mezok[x][y-1])) {
+    if (valid_idx(uj_x) && valid_idx(uj_y - 1) && Eleme(vektor, mezok[sor][oszlop-1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(x) && valid_idx(y + 1) && Eleme(vektor, mezok[x][y+1])) {
+    if (valid_idx(uj_x) && valid_idx(uj_y + 1) && Eleme(vektor, mezok[sor][oszlop+1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(x + 1) && valid_idx(y - 1) && Eleme(vektor, mezok[x+1][y-1])) {
+    if (valid_idx(uj_x + 1) && valid_idx(uj_y - 1) && Eleme(vektor, mezok[sor+1][oszlop-1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(x + 1) && valid_idx(y) && Eleme(vektor, mezok[x+1][y])) {
+    if (valid_idx(uj_x + 1) && valid_idx(uj_y) && Eleme(vektor, mezok[sor+1][oszlop])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(x + 1) && valid_idx(y + 1) && Eleme(vektor, mezok[x+1][y+1])) {
+    if (valid_idx(uj_x + 1) && valid_idx(uj_y + 1) && Eleme(vektor, mezok[sor+1][oszlop+1])) {
         bomba_szomszedok++;
-
     }
 }
 
@@ -78,3 +77,4 @@ bool Eleme(const std::vector<Mezo*>& vektor, const Mezo* vizsgalando){
     }
     return false;
 }
+
