@@ -4,10 +4,10 @@
 
 #ifndef NHF_UJRA_MEZO_H
 #define NHF_UJRA_MEZO_H
-#include "MezoAllapot.h"
+#include "../Segedosztalyok/Grafikai/Enumok/MezoAllapot.h"
 #include <SFML/Graphics.hpp>
 #include <optional>
-#include "matematikai_fuggvenyek.h"
+#include "../onallo_logikai/matematikai_fuggvenyek.h"
 
 
 class Mezo {

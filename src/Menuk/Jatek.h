@@ -4,13 +4,13 @@
 #define NHF_UJRA_JATEK_H
 
 #include "Menu.h"
-#include "Palya.h"
+#include "../Palya/Palya.h"
 #include <stack>
-#include "Nehezseg.h"
+#include "../Segedosztalyok/Grafikai/Enumok/Nehezseg.h"
 #include <SFML/Graphics.hpp>
-#include "Jatekallapot.h"
-#include "JatekFelirat.h"
-#include "matematikai_fuggvenyek.h"
+#include "../Segedosztalyok/Grafikai/Enumok/Jatekallapot.h"
+#include "../Grafikus_segedosztalyok/JatekFelirat.h"
+#include "../onallo_logikai/matematikai_fuggvenyek.h"
 
 
 class Jatek: public Menu{

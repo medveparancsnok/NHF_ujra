@@ -9,6 +9,4 @@
 int random(int a, int b);
 
 
-unsigned char rgb_gen();
-
 #endif //MINESWEEPER_RANDOM_H

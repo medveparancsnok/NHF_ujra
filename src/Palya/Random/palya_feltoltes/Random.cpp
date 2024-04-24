@@ -10,6 +10,4 @@ int random(int a, int b){
     return eloszlas(eszkoz);
 }
 
-unsigned char rgb_gen(){
-    return (unsigned char) random(1,255);
-}
+

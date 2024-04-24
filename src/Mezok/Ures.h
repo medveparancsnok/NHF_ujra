@@ -6,7 +6,7 @@
 #define NHF_URES_H
 
 #include "Mezo.h"
-#include "JatekFelirat.h"
+#include "../Grafikus_segedosztalyok/JatekFelirat.h"
 #include <array>
 
 

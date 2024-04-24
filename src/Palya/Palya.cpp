@@ -2,7 +2,7 @@
 
 
 #include "Palya.h"
-#include "grafikai_fuggvenyek.h"
+#include "../onallo_logikai/grafikai_fuggvenyek.h"
 
 Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
     felrobbant = false;

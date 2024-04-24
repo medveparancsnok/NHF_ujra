@@ -5,15 +5,15 @@
 #ifndef NHF_UJRA_PALYA_H
 #define NHF_UJRA_PALYA_H
 
-#include "Bomba.h"
-#include "Mezo.h"
-#include "Ures.h"
+#include "../Mezok/Bomba.h"
+#include "../Mezok/Mezo.h"
+#include "../Mezok/Ures.h"
 #include <array>
-#include "Nehezseg.h"
-#include "Jatekallapot.h"
-#include "Random.h"
-#include "Jatekallapot.h"
-#include "matematikai_fuggvenyek.h"
+#include "../Segedosztalyok/Grafikai/Enumok/Nehezseg.h"
+#include "../Segedosztalyok/Grafikai/Enumok/Jatekallapot.h"
+#include "Random/palya_feltoltes/Random.h"
+#include "../Segedosztalyok/Grafikai/Enumok/Jatekallapot.h"
+#include "../onallo_logikai/matematikai_fuggvenyek.h"
 #include <iostream>
 
 class Mezo;

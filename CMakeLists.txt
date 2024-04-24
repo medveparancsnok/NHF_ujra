@@ -3,22 +3,22 @@ project(NHF)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(NHF main.cpp
-        FoMenu.cpp
-        main.cpp
-        matematikai_fuggvenyek.h
-        MenuFelirat.cpp
-        Alkalmazas.cpp
-        Bomba.cpp
-        JatekFelirat.cpp
-        Jatek.cpp
-        grafikai_fuggvenyek.cpp
-        Menu.cpp
-        Mezo.cpp
-        Palya.cpp
-        Ures.cpp
-        Random.cpp
-        matematikai_fuggvenyek.cpp
+add_executable(NHF src/main.cpp
+        src/Menuk/FoMenu.cpp
+        src/main.cpp
+        src/onallo_logikai/matematikai_fuggvenyek.h
+        src/Segedosztalyok/Grafikai/MenuFelirat.cpp
+        src/Alkalmazas/Alkalmazas.cpp
+        src/Mezok/Bomba.cpp
+        src/Segedosztalyok/Grafikai/JatekFelirat.cpp
+        src/Menuk/Jatek.cpp
+        src/onallo_logikai/grafikai_fuggvenyek.cpp
+        src/Menuk/Menu.cpp
+        src/Mezok/Mezo.cpp
+        src/Palya/Palya.cpp
+        src/Mezok/Ures.cpp
+        src/Palya/Random/palya_feltoltes/Random.cpp
+        src/onallo_logikai/matematikai_fuggvenyek.cpp
 )
 
 

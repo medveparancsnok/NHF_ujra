@@ -6,7 +6,7 @@
 #include "Menu.h"
 #include <stack>
 #include <SFML/Graphics.hpp>
-#include "MenuFelirat.h"
+#include "../Grafikus_segedosztalyok/MenuFelirat.h"
 #include <iostream>
 
 

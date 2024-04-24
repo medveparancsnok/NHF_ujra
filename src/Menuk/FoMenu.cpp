@@ -3,7 +3,7 @@
 //
 
 #include "FoMenu.h"
-#include "matematikai_fuggvenyek.h"
+#include "../onallo_logikai/matematikai_fuggvenyek.h"
 #include "Jatek.h"
 
 void FoMenu::esemeny_kezel(sf::Event& esemeny){

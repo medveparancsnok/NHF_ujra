@@ -2,7 +2,7 @@
 
 #ifndef NHF_UJRA_ALKALMAZAS_H
 #define NHF_UJRA_ALKALMAZAS_H
-#include "FoMenu.h"
+#include "../Menuk/FoMenu.h"
 
 
 
