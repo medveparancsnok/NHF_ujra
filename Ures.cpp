@@ -1,6 +1,4 @@
-//
-// Created by Otthon on 2024. 04. 18..
-//
+
 
 #include "Ures.h"
 
@@ -15,10 +13,10 @@ void Ures::ramleptel() {
 
 void Ures::megjelenit_atallit() {
     m_alap.setFillColor(sf::Color::White);
-    //szomszedok.setPosition(m_alap.getPosition());
-    //std::string buffer;
-    //buffer += (char)('0' + getSzomszedok());
-    //szomszedok.setString(buffer);
+    szomszedok.setPosition(m_alap.getPosition());
+    std::string buffer;
+    buffer += (char)('0' + bomba_szomszedok);
+    szomszedok.setString(buffer);
 }
 
 
@@ -26,49 +24,57 @@ void Ures::megjelenit(sf::RenderWindow& target) const{
     Mezo::megjelenit(target);
     if(m_allapot == felfedett){
         target.draw(m_alap);
-        //if(szomszedok.getString() != "0") {
-        //    szomszedok.megjelenit(target);
-        //}
+        if(szomszedok.getString() != "0") {
+            szomszedok.megjelenit(target);
+        }
     }
 }
 
-/*int Ures::getSzomszedok() {
-    int bombak_szama = 0;
+void Ures::setSzomszedok(std::vector<Mezo*>& vektor, std::array<std::array<Mezo*, 14>, 14>& mezok) {
+    bomba_szomszedok = 0;
 
-    int x = eger_lekepezes((int)m_alap.getPosition().x, 10, 40);
-    int y = eger_lekepezes((int)m_alap.getPosition().y, 120, 40);
+    int x = (int)eger_lekepezes((size_t)m_alap.getPosition().x, 10, 40);
+    int y = (int)eger_lekepezes((size_t)m_alap.getPosition().y, 120, 40);
 
-    if (valid_idx(x - 1) && valid_idx(y - 1) && eloszlas[(x- 1)][y - 1]) {
-        bombak_szama++;
+    if (valid_idx(x - 1) && valid_idx(y - 1) && Eleme(vektor, mezok[x-1][y-1])) {
+        bomba_szomszedok++;
     }
 
-    if (valid_idx(x - 1) && valid_idx(y) && eloszlas[x-1][y]) {
-        bombak_szama++;
+    if (valid_idx(x - 1) && valid_idx(y) && Eleme(vektor, mezok[x-1][y])) {
+        bomba_szomszedok++;
 
     }
-    if (valid_idx(x - 1) && valid_idx(y + 1) && eloszlas[x-1][y+1]) {
-        bombak_szama++;
+    if (valid_idx(x - 1) && valid_idx(y + 1) && Eleme(vektor, mezok[x-1][y+1])) {
+        bomba_szomszedok++;
 
     }
-    if (valid_idx(x) && valid_idx(y - 1) && eloszlas[x][y-1]) {
-        bombak_szama++;
+    if (valid_idx(x) && valid_idx(y - 1) && Eleme(vektor, mezok[x][y-1])) {
+        bomba_szomszedok++;
 
     }
-    if (valid_idx(x) && valid_idx(y + 1) && eloszlas[x][y + 1]) {
-        bombak_szama++;
+    if (valid_idx(x) && valid_idx(y + 1) && Eleme(vektor, mezok[x][y+1])) {
+        bomba_szomszedok++;
 
     }
-    if (valid_idx(x + 1) && valid_idx(y - 1) && eloszlas[x+1][y-1]) {
-        bombak_szama++;
+    if (valid_idx(x + 1) && valid_idx(y - 1) && Eleme(vektor, mezok[x+1][y-1])) {
+        bomba_szomszedok++;
 
     }
-    if (valid_idx(x + 1) && valid_idx(y ) && eloszlas[x+1][y]) {
-        bombak_szama++;
+    if (valid_idx(x + 1) && valid_idx(y) && Eleme(vektor, mezok[x+1][y])) {
+        bomba_szomszedok++;
 
     }
-    if (valid_idx(x + 1) && valid_idx(y + 1) && eloszlas[x+1][y+1]) {
-        bombak_szama++;
+    if (valid_idx(x + 1) && valid_idx(y + 1) && Eleme(vektor, mezok[x+1][y+1])) {
+        bomba_szomszedok++;
 
     }
-    return bombak_szama;
-}*/
+}
+
+bool Eleme(const std::vector<Mezo*>& vektor, const Mezo* vizsgalando){
+    for(size_t i = 0; i< vektor.size(); i++){
+        if(vizsgalando == vektor[i]){
+            return true;
+        }
+    }
+    return false;
+}

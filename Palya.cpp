@@ -21,6 +21,7 @@ Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
 
     mezo_alap = negyzet_betolt();
 
+    std::vector<Mezo*> vektor;
     ures_mezok = 14 * 14;
     for(unsigned long long i = 0; i < 14; i++){
         for(unsigned long long j = 0; j< 14; j++){
@@ -31,36 +32,33 @@ Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
                 case konnyu:{
                     if(random(0,9) == 0){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
-                        eloszlas[i][j] = true;
+                        vektor.push_back(mezok[i][j]);
                         ures_mezok--;
                     }
                     else {
-                        mezok[i][j] = new Ures(eloszlas, ures_mezok, flagSprite, mezo_alap, font);
-                        eloszlas[i][j] = false;
+                        mezok[i][j] = NULL;
                     }
                 }
                 break;
                 case kozepes:{
                     if(random(0,6) == 0){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
-                        eloszlas[i][j] = true;
+                        vektor.push_back(mezok[i][j]);
                         ures_mezok--;
                     }
                     else{
-                        mezok[i][j] = new Ures(eloszlas, ures_mezok, flagSprite, mezo_alap, font);
-                        eloszlas[i][j] = false;
+                        mezok[i][j] = NULL;
                     }
                 }
                 break;
                 case nehez:{
                     if(random(0,4) == 0){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
-                        eloszlas[i][j] = true;
+                        vektor.push_back(mezok[i][j]);
                         ures_mezok--;
                     }
                     else{
-                        mezok[i][j] = new Ures(eloszlas, ures_mezok, flagSprite, mezo_alap, font);
-                        eloszlas[i][j] = false;
+                        mezok[i][j] = NULL;
                     }
                 }
                 break;
@@ -69,7 +67,17 @@ Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
             }
         }
     }
+    for(unsigned long long i = 0; i < 14; i++) {
+        for (unsigned long long j = 0; j < 14; j++) {
+            if(mezok[i][j] == NULL){
+                mezok[i][j] = new Ures(ures_mezok, flagSprite, mezo_alap,font);
+                Ures* ures = static_cast<Ures*>(mezok[i][j]);
+                ures->setSzomszedok(vektor, mezok);
+            }
+        }
+    }
 }
+
 
 
 void Palya::megjelenit(sf::RenderWindow &target) {

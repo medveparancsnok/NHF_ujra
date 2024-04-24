@@ -19,7 +19,7 @@ class Ures: public Mezo {
 public:
     Ures(int& ures_mezok, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
 
-    //int getSzomszedok();
+    void setSzomszedok(std::vector<Mezo*>& vektor, std::array<std::array<Mezo*, 14>, 14>& mezok);
 
     void ramleptel() override;
 
@@ -27,6 +27,8 @@ public:
 
     void megjelenit_atallit();
 };
+
+bool Eleme(const std::vector<Mezo*>& vektor, const Mezo* vizsgalando);
 
 
 #endif //NHF_URES_H
