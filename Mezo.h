@@ -47,6 +47,10 @@ public:
         }
     }
 
+    MezoAllapot getAllapot() const{
+        return m_allapot;
+    }
+
     virtual void megjelenit(sf::RenderWindow& target) const{
         if(m_allapot == flagged){
             target.draw(m_alap);

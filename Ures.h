@@ -12,6 +12,7 @@
 
 
 class Ures: public Mezo {
+    std::array<std::array<Mezo*, 14>, 14>& mezok;
     int& ures_mezok;
     size_t bomba_szomszedok;
     unsigned long long sor;
@@ -20,11 +21,13 @@ class Ures: public Mezo {
     JatekFelirat szomszedok;
 
 public:
-    Ures(int& ures_mezok,unsigned long long sor,unsigned long long oszlop, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
+    Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,unsigned long long sor,unsigned long long oszlop, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
 
-    void setSzomszedok(std::vector<Mezo*>& vektor,const std::array<std::array<Mezo*, 14>, 14>& mezok);
+    void setSzomszedok(std::vector<Mezo*>& vektor);
 
     void ramleptel() override;
+
+    void felderito_BFS();
 
     void megjelenit(sf::RenderWindow& target) const override ;
 

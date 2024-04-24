@@ -21,6 +21,7 @@ class Mezo;
 
 class Palya {
     std::array<std::array<Mezo*, 14>, 14> mezok;
+    std::vector<Mezo*> vektor;
     int ures_mezok;
     bool felrobbant;
     sf::Sprite flagSprite;
@@ -36,8 +37,6 @@ public:
     JatekAllapot esemeny_kezel(sf::Event& event);
 
     void megjelenit(sf::RenderWindow& target);
-
-    //size_t szomszedok_meghataroz(const std::vector<Mezo*>& vektor, int i, int j);
 
     ~Palya();
 };

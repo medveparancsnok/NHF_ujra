@@ -7,6 +7,8 @@
 Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
     felrobbant = false;
 
+    //GRAFIKA BETÖLTÉS IS KÜLÖN FGV-BE MEGY
+
     if(!flagTextura.loadFromFile("Flag.png")){
         std::cout << "baj van" << std::endl;
     }
@@ -21,8 +23,10 @@ Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
 
     mezo_alap = negyzet_betolt();
 
-    std::vector<Mezo*> vektor;
     ures_mezok = 14 * 14;
+
+    // KÜLÖN FÜGGVÉNYBE MEGY A BOMBÁK INICIALIZÁLÁSA
+
     for(unsigned long long i = 0; i < 14; i++){
         for(unsigned long long j = 0; j< 14; j++){
             flagSprite.setPosition((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1));
@@ -67,56 +71,20 @@ Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
             }
         }
     }
+    // KÜLÖN FÜGGVÉNYBE MEGY AZ ÜRES MEZŐK INICIALIZÁLÁSA
+
     for(unsigned long long i = 0; i < 14; i++) {
         for (unsigned long long j = 0; j < 14; j++) {
             if(mezok[i][j] == NULL){
                 flagSprite.setPosition((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1));
                 mezo_alap.setPosition(sf::Vector2f((float)(120 + j * 40), (float)(20 + i * 40)));
-                mezok[i][j] = new Ures(ures_mezok,i , j, flagSprite, mezo_alap,font);
+                mezok[i][j] = new Ures(mezok, ures_mezok,i , j, flagSprite, mezo_alap,font);
                 Ures *ures = dynamic_cast<Ures*>(mezok[i][j]);
-                ures->setSzomszedok(vektor, mezok);
+                ures->setSzomszedok(vektor);
             }
         }
     }
 }
-
-/*size_t Palya::szomszedok_meghataroz(const std::vector<Mezo*>& vektor, int i, int j) {
-    size_t bomba_szomszedok = 0;
-
-
-    if (valid_idx(i - 1) && valid_idx(j - 1) && Eleme(vektor, mezok[i-1][j-1])) {
-        bomba_szomszedok++;
-    }
-
-    if (valid_idx(i - 1) && valid_idx(j) && Eleme(vektor, mezok[i-1][j])) {
-        bomba_szomszedok++;
-
-    }
-    if (valid_idx(i - 1) && valid_idx(j + 1) && Eleme(vektor, mezok[i-1][j+1])) {
-        bomba_szomszedok++;
-
-    }
-    if (valid_idx(i) && valid_idx(j - 1) && Eleme(vektor, mezok[i][j-1])) {
-        bomba_szomszedok++;
-
-    }
-    if (valid_idx(i) && valid_idx(j + 1) && Eleme(vektor, mezok[i][j+1])) {
-        bomba_szomszedok++;
-
-    }
-    if (valid_idx(i + 1) && valid_idx(j - 1) && Eleme(vektor, mezok[i+1][j-1])) {
-        bomba_szomszedok++;
-
-    }
-    if (valid_idx(i + 1) && valid_idx(j) && Eleme(vektor, mezok[i+1][j])) {
-        bomba_szomszedok++;
-
-    }
-    if (valid_idx(i + 1) && valid_idx(j + 1) && Eleme(vektor, mezok[i+1][j+1])) {
-        bomba_szomszedok++;
-    }
-    return bomba_szomszedok;
-}*/
 
 void Palya::megjelenit(sf::RenderWindow &target) {
     for(size_t i = 0; i < 14; i++){
@@ -125,10 +93,11 @@ void Palya::megjelenit(sf::RenderWindow &target) {
         }
     }
 }
+
 JatekAllapot Palya::esemeny_kezel(sf::Event &esemeny) {
     if(palyan_belul(esemeny.mouseButton.x, esemeny.mouseButton.y)){
-        size_t i = eger_lekepezes((size_t)esemeny.mouseButton.y, 10, 40);
-        size_t j = eger_lekepezes((size_t)esemeny.mouseButton.x, 120, 40);
+        size_t i = eger_lekepezes(esemeny.mouseButton.y, 10, 40);
+        size_t j = eger_lekepezes(esemeny.mouseButton.x, 120, 40);
         mezok[i][j]->esemeny_kezel(esemeny);
     }
     if(ures_mezok == 0){
@@ -149,6 +118,8 @@ Palya::~Palya(){
         }
     }
 }
+
+
 
 
 

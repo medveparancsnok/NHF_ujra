@@ -2,13 +2,45 @@
 
 #include "Ures.h"
 
-Ures::Ures(int& ures_mezok,unsigned long long sor, unsigned long long oszlop, sf::Sprite &m_flag, sf::RectangleShape &m_alap, sf::Font &font,
-           MezoAllapot kezdo): Mezo(m_flag, m_alap, kezdo), ures_mezok(ures_mezok),sor(sor), oszlop(oszlop) , font(font), szomszedok(font, "0",20, sf::Color::Black, sf::Vector2f(0,0), sf::Text::Bold){}
+Ures::Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,unsigned long long sor, unsigned long long oszlop, sf::Sprite &m_flag, sf::RectangleShape &m_alap, sf::Font &font,
+           MezoAllapot kezdo): Mezo(m_flag, m_alap, kezdo), mezok(mezok), ures_mezok(ures_mezok),sor(sor), oszlop(oszlop) , font(font), szomszedok(font, "0",20, sf::Color::Black, sf::Vector2f(0,0), sf::Text::Bold){}
 
 
 void Ures::ramleptel() {
     megjelenit_atallit();
     ures_mezok--;
+    if(bomba_szomszedok == 0){
+        felderito_BFS();
+    }
+}
+
+void Ures::felderito_BFS() {
+    int i = (int) sor;
+    int j = (int) oszlop;
+    if(valid_idx(i-1) && valid_idx(j-1)){
+        mezok[sor-1][oszlop-1]->bal_klikk();
+    }
+    if(valid_idx(i-1) && valid_idx(j)){
+        mezok[sor-1][oszlop]->bal_klikk();
+    }
+    if(valid_idx(i-1) && valid_idx(j+1)){
+        mezok[sor-1][oszlop+1]->bal_klikk();
+    }
+    if(valid_idx(i) && valid_idx(j-1)){
+        mezok[sor][oszlop-1]->bal_klikk();
+    }
+    if(valid_idx(i) && valid_idx(j+1)){
+        mezok[sor][oszlop+1]->bal_klikk();
+    }
+    if(valid_idx(i+1) && valid_idx(j-1)){
+        mezok[sor+1][oszlop-1]->bal_klikk();
+    }
+    if(valid_idx(i+1) && valid_idx(j)){
+        mezok[sor+1][oszlop]->bal_klikk();
+    }
+    if(valid_idx(i+1) && valid_idx(j+1)){
+        mezok[sor+1][oszlop+1]->bal_klikk();
+    }
 }
 
 void Ures::megjelenit_atallit() {
@@ -30,7 +62,7 @@ void Ures::megjelenit(sf::RenderWindow& target) const{
     }
 }
 
-void Ures::setSzomszedok(std::vector<Mezo*>& vektor,const std::array<std::array<Mezo*, 14>, 14>& mezok) {
+void Ures::setSzomszedok(std::vector<Mezo*>& vektor) {
     bomba_szomszedok = 0;
 
     int uj_x = (int)sor;
