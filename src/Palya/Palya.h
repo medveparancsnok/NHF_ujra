@@ -21,7 +21,6 @@ class Mezo;
 
 class Palya {
     std::array<std::array<Mezo*, 14>, 14> mezok;
-    std::vector<Mezo*> vektor;
     int ures_mezok;
     bool felrobbant;
     sf::Sprite flagSprite;
@@ -33,6 +32,10 @@ class Palya {
 
 public:
     Palya(Nehezseg nehezseg, sf::Font& font);
+
+    void bomba_init(const Nehezseg& nehezseg, std::vector<Mezo*>& bombak);
+
+    void ures_init(const std::vector<Mezo*>& bombak);
 
     JatekAllapot esemeny_kezel(sf::Event& event);
 

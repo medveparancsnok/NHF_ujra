@@ -16,9 +16,6 @@ bool vissza_lep(sf::Event& e){
     return e.mouseButton.x >= 0 && e.mouseButton.x <=90 &&e.mouseButton.y >= 570 && e.mouseButton.y <= 600;
 }
 
-bool palyan_belul(int x, int y){
-    return x >= 120 && x <= 680 && y >= 20 && y <= 580;
-}
 
 unsigned long long eger_lekepezes(int mit, int eltolas, int mennyivel){
     return (unsigned long long)((mit-eltolas) / mennyivel);
@@ -26,4 +23,8 @@ unsigned long long eger_lekepezes(int mit, int eltolas, int mennyivel){
 
 bool valid_idx(int idx){
     return idx <= 13 && idx >= 0;
+}
+
+bool valid_idx(size_t idx){
+    return idx <= 13;
 }

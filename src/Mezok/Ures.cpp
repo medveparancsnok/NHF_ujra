@@ -62,7 +62,7 @@ void Ures::megjelenit(sf::RenderWindow& target) const{
     }
 }
 
-void Ures::setSzomszedok(std::vector<Mezo*>& vektor) {
+void Ures::setSzomszedok(const std::vector<Mezo*>& vektor) {
     bomba_szomszedok = 0;
 
     int uj_x = (int)sor;

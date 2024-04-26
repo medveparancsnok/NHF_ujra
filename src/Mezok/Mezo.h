@@ -1,6 +1,4 @@
-//
-// Created by Otthon on 2024. 04. 16..
-//
+
 
 #ifndef NHF_UJRA_MEZO_H
 #define NHF_UJRA_MEZO_H
