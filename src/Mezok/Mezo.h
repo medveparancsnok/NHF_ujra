@@ -62,6 +62,10 @@ public:
         return m_allapot;
     }
 
+    /// @brief Teszteléshez szükséges
+    /// @return Visszaadja, hogy a mező bomba-e (true), vagy sem (false)
+    virtual bool IsBomb() const = 0;
+
     /// @brief A mezőt jeleníti meg (függetlenül a specifikálktabb típusától), ha flagged, vagy felfedetlen
     /// @param Az ablak, amire a megjelenítés történik
     virtual void megjelenit(sf::RenderWindow& target) const{

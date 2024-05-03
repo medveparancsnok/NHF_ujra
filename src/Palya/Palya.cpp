@@ -27,7 +27,9 @@ Palya::Palya(Nehezseg nehezseg){
 
     ures_init();
 
-    kezdes();
+    if(nehezseg != teszt) {
+        kezdes();
+    }
 }
 
 void Palya::bomba_init(const Nehezseg& nehezseg) {
@@ -41,7 +43,7 @@ void Palya::bomba_init(const Nehezseg& nehezseg) {
 
             switch(nehezseg){
                 case teszt:{
-                    if((i == 5 && j == 2) || (i == 4 && j == 3) || (i == 5 && j == 4)){
+                    if((i == 5 && j == 2) || (i == 4 && j == 3) || (i == 5 && j == 4) || (i == 4 && j == 4)){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
                         bombak.push_back(mezok[i][j]);
                         ures_mezok--;

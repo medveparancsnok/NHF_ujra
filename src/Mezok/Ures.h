@@ -53,6 +53,12 @@ public:
     size_t getBomba_szomszedok() const{
         return bomba_szomszedok;
     }
+
+    /// @brief Teszteléshez szükséges
+    /// @return Mindig hamis értékkel tér vissza
+    bool IsBomb() const override{
+        return false;
+    }
 };
 
 /// @brief Megvizsgálja, hogy az adott mező bomba-e

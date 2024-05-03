@@ -25,6 +25,12 @@ public:
 
     /// @brief Kezeli, hogy mi történik, ha a játékos rálép egy ilyen bomba mezőre
     void ramleptel() override;
+
+    /// @brief Teszteléshez szükséges
+    /// @return Mindig igaz értékkel tér vissza
+    bool IsBomb() const override{
+        return true;
+    }
 };
 
 
