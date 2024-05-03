@@ -2,8 +2,8 @@
 
 #include "Jatek.h"
 
-Jatek::Jatek(std::stack<Menu *>& m_stack, Nehezseg nehezseg, sf::Font& font) : m_stack(m_stack), palya(nehezseg, font), vissza(font, "VISSZA", 25,sf::Color::Black, sf::Vector2f(5,565), sf::Text::Style::Underlined),
-vege(font, "GYOZTEL", 70, sf::Color::Red, sf::Vector2f(200, 200), sf::Text::Bold), font(font){
+Jatek::Jatek(std::stack<Menu *>& m_stack, Nehezseg nehezseg, sf::Font& font) : m_stack(m_stack), palya(nehezseg), vissza(font, "VISSZA", 25,sf::Color::Black, sf::Vector2f(5,565), sf::Text::Style::Underlined, sf::Vector2f(95,30), sf::Vector2f(0, 570)),
+vege(font, "GYOZTEL", 70, sf::Color::Red, sf::Vector2f(200, 200), sf::Text::Bold){
     jatekallapot = jatek;
 }
 
@@ -13,7 +13,8 @@ void Jatek::esemeny_kezel(sf::Event& esemeny) {
             jatekallapot = palya.esemeny_kezel(esemeny);
         }
         if (jatekallapot == gyozelem || jatekallapot == vereseg) {
-            if (vissza_lep(esemeny)) {
+            sf::Vector2f kattintas((float)esemeny.mouseButton.x, (float)esemeny.mouseButton.y);
+            if (vissza.belul(kattintas)) {
                 m_stack.pop();
             }
         }

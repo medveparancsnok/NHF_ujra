@@ -1,7 +1,7 @@
 #include "grafikai_fuggvenyek.h"
 
 
-sf::RectangleShape negyzet_betolt(){
+sf::RectangleShape mezo_alap_betolt(){
     sf::RectangleShape betoltendo;
 
     betoltendo.setSize(sf::Vector2f(40, 40));

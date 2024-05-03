@@ -3,14 +3,20 @@ project(NHF)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(NHF src/main.cpp
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG        v1.14.0
+)
+FetchContent_MakeAvailable(googletest)
+
+add_executable(NHF
         src/Menuk/FoMenu.cpp
-        src/main.cpp
         src/onallo_logikai/matematikai_fuggvenyek.h
-        src/Segedosztalyok/Grafikai/MenuFelirat.cpp
+        src/Segedosztalyok/Grafikai/Felirat.cpp
         src/Alkalmazas/Alkalmazas.cpp
         src/Mezok/Bomba.cpp
-        src/Segedosztalyok/Grafikai/JatekFelirat.cpp
         src/Menuk/Jatek.cpp
         src/onallo_logikai/grafikai_fuggvenyek.cpp
         src/Menuk/Menu.cpp
@@ -19,6 +25,10 @@ add_executable(NHF src/main.cpp
         src/Mezok/Ures.cpp
         src/Palya/Random/palya_feltoltes/Random.cpp
         src/onallo_logikai/matematikai_fuggvenyek.cpp
+        src/main.cpp
+        src/Segedosztalyok/Grafikai/MenuFelirat.cpp
+
+
 )
 
 
@@ -32,3 +42,10 @@ set(SFML_DIR D:/SFML/SFML-2.6.1/lib/cmake/SFML)
 find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
 
 target_link_libraries(NHF sfml-system sfml-window sfml-graphics sfml-audio)
+
+target_link_libraries(${PROJECT_NAME}
+        GTest::gtest_main
+)
+
+target_compile_definitions(NHF PRIVATE
+)

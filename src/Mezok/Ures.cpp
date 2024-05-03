@@ -2,8 +2,8 @@
 
 #include "Ures.h"
 
-Ures::Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,unsigned long long sor, unsigned long long oszlop, sf::Sprite &m_flag, sf::RectangleShape &m_alap, sf::Font &font,
-           MezoAllapot kezdo): Mezo(m_flag, m_alap, kezdo), mezok(mezok), ures_mezok(ures_mezok),sor(sor), oszlop(oszlop) , font(font), szomszedok(font, "0",20, sf::Color::Black, sf::Vector2f(0,0), sf::Text::Bold){}
+Ures::Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,size_t sor, size_t oszlop, sf::Sprite &m_flag, sf::RectangleShape &m_alap,
+           sf::Font& font, MezoAllapot kezdo): Mezo(m_flag, m_alap, kezdo), mezok(mezok), ures_mezok(ures_mezok),sor(sor), oszlop(oszlop) , szomszedok(font, "0",20, sf::Color::Black, sf::Vector2f(0,0), sf::Text::Bold){}
 
 
 void Ures::ramleptel() {
@@ -62,48 +62,48 @@ void Ures::megjelenit(sf::RenderWindow& target) const{
     }
 }
 
-void Ures::setSzomszedok(const std::vector<Mezo*>& vektor) {
+void Ures::setSzomszedok(const std::vector<Mezo*>& bombak) {
     bomba_szomszedok = 0;
 
     int uj_x = (int)sor;
     int uj_y = (int)oszlop;
 
-    if (valid_idx(uj_x - 1) && valid_idx(uj_y - 1) && Eleme(vektor,  mezok[sor - 1][oszlop - 1])) {
+    if (valid_idx(uj_x - 1) && valid_idx(uj_y - 1) && Eleme(bombak,  mezok[sor - 1][oszlop - 1])) {
         bomba_szomszedok++;
     }
 
-    if (valid_idx(uj_x - 1) && valid_idx(uj_y) && Eleme(vektor, mezok[sor-1][oszlop])) {
+    if (valid_idx(uj_x - 1) && valid_idx(uj_y) && Eleme(bombak, mezok[sor-1][oszlop])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(uj_x - 1) && valid_idx(uj_y + 1) && Eleme(vektor, mezok[sor-1][oszlop+1])) {
+    if (valid_idx(uj_x - 1) && valid_idx(uj_y + 1) && Eleme(bombak, mezok[sor-1][oszlop+1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(uj_x) && valid_idx(uj_y - 1) && Eleme(vektor, mezok[sor][oszlop-1])) {
+    if (valid_idx(uj_x) && valid_idx(uj_y - 1) && Eleme(bombak, mezok[sor][oszlop-1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(uj_x) && valid_idx(uj_y + 1) && Eleme(vektor, mezok[sor][oszlop+1])) {
+    if (valid_idx(uj_x) && valid_idx(uj_y + 1) && Eleme(bombak, mezok[sor][oszlop+1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(uj_x + 1) && valid_idx(uj_y - 1) && Eleme(vektor, mezok[sor+1][oszlop-1])) {
+    if (valid_idx(uj_x + 1) && valid_idx(uj_y - 1) && Eleme(bombak, mezok[sor+1][oszlop-1])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(uj_x + 1) && valid_idx(uj_y) && Eleme(vektor, mezok[sor+1][oszlop])) {
+    if (valid_idx(uj_x + 1) && valid_idx(uj_y) && Eleme(bombak, mezok[sor+1][oszlop])) {
         bomba_szomszedok++;
 
     }
-    if (valid_idx(uj_x + 1) && valid_idx(uj_y + 1) && Eleme(vektor, mezok[sor+1][oszlop+1])) {
+    if (valid_idx(uj_x + 1) && valid_idx(uj_y + 1) && Eleme(bombak, mezok[sor+1][oszlop+1])) {
         bomba_szomszedok++;
     }
 }
 
-bool Eleme(const std::vector<Mezo*>& vektor, const Mezo* vizsgalando){
-    for(size_t i = 0; i< vektor.size(); i++){
-        if(vizsgalando == vektor[i]){
+bool Eleme(const std::vector<Mezo*>& bombak, const Mezo* vizsgalando){
+    for(size_t i = 0; i< bombak.size(); i++){
+        if(vizsgalando == bombak[i]){
             return true;
         }
     }

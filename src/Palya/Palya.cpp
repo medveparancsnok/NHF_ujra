@@ -4,15 +4,53 @@
 #include "Palya.h"
 #include "../onallo_logikai/grafikai_fuggvenyek.h"
 
-void Palya::bomba_init(const Nehezseg& nehezseg, std::vector<Mezo*>& bombak) {
+Palya::Palya(Nehezseg nehezseg){
+    felrobbant = false;
+
+    //GRAFIKA BETÖLTÉS IS KÜLÖN FGV-BE MEGY
+
+    if(!flagTextura.loadFromFile("Flag.png")){
+        std::cout << "baj van" << std::endl;
+    }
+    flagSprite.setTexture(flagTextura);
+    flagSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
+
+    if(!bombaTextura.loadFromFile("Bomba.png")){
+        std::cout << "baj van" << std::endl;
+    }
+    bombaSprite.setTexture(bombaTextura);
+    bombaSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
+
+    mezo_alap = mezo_alap_betolt();
+
+    bomba_init(nehezseg);
+
+    ures_init();
+
+    kezdes();
+}
+
+void Palya::bomba_init(const Nehezseg& nehezseg) {
     ures_mezok = 14 * 14;
 
-    for(unsigned long long i = 0; i < 14; i++){
-        for(unsigned long long j = 0; j< 14; j++){
+    for(size_t i = 0; i < 14; i++){
+        for(size_t j = 0; j< 14; j++){
             flagSprite.setPosition((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1));
             bombaSprite.setPosition((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1));
-            mezo_alap.setPosition(sf::Vector2f((float)(120 + j * 40), (float)(20 + i * 40)));
+            mezo_alap.setPosition(sf::Vector2f((float)(120 + j * 40 + 1), (float)(20 + i * 40 + 1)));
+
             switch(nehezseg){
+                case teszt:{
+                    if((i == 5 && j == 2) || (i == 4 && j == 3) || (i == 5 && j == 4)){
+                        mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
+                        bombak.push_back(mezok[i][j]);
+                        ures_mezok--;
+                    }
+                    else {
+                        mezok[i][j] = NULL;
+                    }
+                }
+                break;
                 case konnyu:{
                     if(random(0,9) == 0){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
@@ -53,48 +91,33 @@ void Palya::bomba_init(const Nehezseg& nehezseg, std::vector<Mezo*>& bombak) {
     }
 }
 
-                    //UNSIGNED LONG LONG LECSERÉLÉS
 
-void Palya::ures_init(const std::vector<Mezo *> &bombak) {
+void Palya::ures_init() {
+    while(!font.loadFromFile("arial.ttf"));
     for(size_t i = 0; i < 14; i++) {
         for (size_t j = 0; j < 14; j++) {
             if(mezok[i][j] == NULL){
                 flagSprite.setPosition((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1));
-                mezo_alap.setPosition(sf::Vector2f((float)(120 + j * 40), (float)(20 + i * 40)));
-                mezok[i][j] = new Ures(mezok, ures_mezok,i , j, flagSprite, mezo_alap,font);
-                Ures *ures = dynamic_cast<Ures*>(mezok[i][j]);
+                mezo_alap.setPosition(sf::Vector2f((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1)));
+                Ures* ures = new Ures(mezok, ures_mezok,i , j, flagSprite, mezo_alap, font);
                 ures->setSzomszedok(bombak);
+                if(ures->getBomba_szomszedok() == 0){
+                    szomszed_nelkuliek.push_back({i,j});
+                }
+                mezok[i][j] = ures;
             }
         }
     }
 }
 
-Palya::Palya(Nehezseg nehezseg, sf::Font& font): font(font){
-    felrobbant = false;
-
-    //GRAFIKA BETÖLTÉS IS KÜLÖN FGV-BE MEGY
-
-    if(!flagTextura.loadFromFile("Flag.png")){
-        std::cout << "baj van" << std::endl;
-    }
-    flagSprite.setTexture(flagTextura);
-    flagSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
-
-    if(!bombaTextura.loadFromFile("Bomba.png")){
-        std::cout << "baj van" << std::endl;
-    }
-    bombaSprite.setTexture(bombaTextura);
-    bombaSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
-
-    mezo_alap = negyzet_betolt();
-
-    std::vector<Mezo*> bombak;
-
-    bomba_init(nehezseg, bombak);
-
-    ures_init(bombak);
-
+void Palya::kezdes() {
+    size_t kivalasztott_mezo = random(0, szomszed_nelkuliek.size());
+    size_t sor = szomszed_nelkuliek[kivalasztott_mezo].first;
+    size_t oszlop = szomszed_nelkuliek[kivalasztott_mezo].second;
+    mezok[sor][oszlop]->ramleptel();
 }
+
+
 
 void Palya::megjelenit(sf::RenderWindow &target) {
     for(size_t i = 0; i < 14; i++){

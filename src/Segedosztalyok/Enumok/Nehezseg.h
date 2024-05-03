@@ -8,7 +8,8 @@
 enum Nehezseg{
     konnyu,
     kozepes,
-    nehez
+    nehez,
+    teszt
 };
 
 #endif //NHF_UJRA_NEHEZSEG_H

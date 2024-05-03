@@ -8,13 +8,14 @@
 
 void FoMenu::esemeny_kezel(sf::Event& esemeny){
     if (esemeny.mouseButton.button == sf::Mouse::Left) {
-        if (konnyun_belul(esemeny.mouseButton.x,esemeny.mouseButton.y)) {
+        sf::Vector2f kattintas((float)esemeny.mouseButton.x, (float)esemeny.mouseButton.y);
+        if (konnyu_text.belul(kattintas)) {
             m_stack.push(new Jatek(m_stack, konnyu, font));
         }
-        if (kozepesen_belul(esemeny.mouseButton.x,esemeny.mouseButton.y)) {
+        if (kozepes_text.belul(kattintas)) {
             m_stack.push(new Jatek(m_stack, kozepes, font));
         }
-        if (nehezen_belul(esemeny.mouseButton.x,esemeny.mouseButton.y)) {
+        if (nehez_text.belul(kattintas)) {
             m_stack.push(new Jatek(m_stack, nehez, font));
         }
     }

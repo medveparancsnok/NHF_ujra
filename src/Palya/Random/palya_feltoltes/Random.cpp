@@ -4,9 +4,9 @@
 
 #include "Random.h"
 
-int random(int a, int b){
+size_t random(size_t a, size_t b){
     static std::random_device eszkoz;
-    std::uniform_int_distribution<int> eloszlas(a,b);
+    std::uniform_int_distribution<size_t> eloszlas(a,b);
     return eloszlas(eszkoz);
 }
 
