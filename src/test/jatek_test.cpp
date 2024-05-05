@@ -1,6 +1,5 @@
 
-#include "../Palya/palya.h"
-#include "../Palya/Random/palya_feltoltes/Random.h"
+#include "../Palya/Palya.h"
 #include "SFML/Graphics.hpp"
 
 
