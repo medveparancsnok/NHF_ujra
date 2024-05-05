@@ -70,6 +70,18 @@ public:
         return mezok;
     }
 
+    /// @brief Getter a teszteléshez
+    /// \return Mennyi a még fel nem fedett üres mezők száma
+    int getUres() const{
+        return ures_mezok;
+    }
+
+    /// @brief Getter a teszteléshez
+    /// @return Bomba mező lett-e felfedve
+    bool getFelrobbant() const{
+        return felrobbant;
+    }
+
     /// @brief Destruktor, egyesével végigmegy a tömbön és a mezőket felszabadítja
     ~Palya();
 };
