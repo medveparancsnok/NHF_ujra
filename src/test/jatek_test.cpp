@@ -34,7 +34,7 @@ TEST(PalyaInicializalas, ures_init){
     Palya palya(teszt);
     for(size_t i = 0; i< 13; i++){
         for(size_t j = 0; j < 13; j++){
-            if(((i != 5 && (j != 2 || j != 4)) && (i != 4 && (j != 3 || j != 4)))){
+            if((!(i == 5 && (j == 2 || j == 4)) && !(i == 4 && (j == 3 || j == 4)))){
                 EXPECT_FALSE(palya.getPalya()[i][j]->IsBomb());
             }
         }
