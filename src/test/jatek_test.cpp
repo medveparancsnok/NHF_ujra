@@ -176,7 +176,6 @@ TEST(Jatek, bombara_lepes_mezo_szempontjabol_1){
     bal_kattintas.type = sf::Event::MouseButtonPressed;
     bal_kattintas.mouseButton.button = sf::Mouse::Left;
     palya.getPalya()[5][2]->esemeny_kezel(bal_kattintas);
-    EXPECT_EQ(palya.)
 }
 
 //TEST(Jatek, bombaval_szomszedosra_lepek){}
