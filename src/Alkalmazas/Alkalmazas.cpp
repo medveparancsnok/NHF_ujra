@@ -4,7 +4,9 @@
 
 Alkalmazas::Alkalmazas():ablak(sf::VideoMode(800,600), "Aknakereso", sf::Style::Default) {
     ablak.setFramerateLimit(60);
-    font.loadFromFile("arial.ttf");
+    if(!font.loadFromFile("arial.ttf")){
+        throw "Nem sikerult Font-ot betolteni";
+    }
     FoMenu *fomenu = new FoMenu(stack, font);
     stack.push(fomenu);
 }

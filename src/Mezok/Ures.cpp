@@ -101,6 +101,16 @@ void Ures::setSzomszedok(const std::vector<Mezo*>& bombak) {
     }
 }
 
+
+size_t Ures::getBomba_szomszedok() const{
+    return bomba_szomszedok;
+}
+
+
+bool Ures::IsBomb() const{
+return false;
+}
+
 bool Eleme(const std::vector<Mezo*>& bombak, const Mezo* vizsgalando){
     for(size_t i = 0; i< bombak.size(); i++){
         if(vizsgalando == bombak[i]){

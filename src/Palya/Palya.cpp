@@ -10,13 +10,13 @@ Palya::Palya(Nehezseg nehezseg){
     //GRAFIKA BETÖLTÉS IS KÜLÖN FGV-BE MEGY
 
     if(!flagTextura.loadFromFile("Flag.png")){
-        std::cout << "baj van" << std::endl;
+        throw "Texturat nem sikerult betolteni";
     }
     flagSprite.setTexture(flagTextura);
     flagSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
 
     if(!bombaTextura.loadFromFile("Bomba.png")){
-        std::cout << "baj van" << std::endl;
+        throw "Texturat nem sikerult betolteni";
     }
     bombaSprite.setTexture(bombaTextura);
     bombaSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
@@ -95,7 +95,9 @@ void Palya::bomba_init(const Nehezseg& nehezseg) {
 
 
 void Palya::ures_init() {
-    while(!font.loadFromFile("arial.ttf"));
+    if(!font.loadFromFile("arial.ttf")){
+        throw "Nem sikerult Font-ot betolteni";
+    }
     for(size_t i = 0; i < 14; i++) {
         for (size_t j = 0; j < 14; j++) {
             if(mezok[i][j] == NULL){
@@ -144,6 +146,20 @@ JatekAllapot Palya::esemeny_kezel(sf::Event &esemeny) {
     else{
         return jatek;
     }
+}
+
+
+std::array<std::array<Mezo*, 14>, 14>& Palya::getPalya(){
+    return mezok;
+}
+
+int Palya::getUres() const{
+    return ures_mezok;
+}
+
+
+bool Palya::getFelrobbant() const{
+    return felrobbant;
 }
 
 Palya::~Palya(){

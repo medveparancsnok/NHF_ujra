@@ -50,15 +50,12 @@ public:
 
     /// @breif Visszaadja az adott üres mező bombaszomszédainak a számát
     /// \return A szomszédok száma
-    size_t getBomba_szomszedok() const{
-        return bomba_szomszedok;
-    }
+    size_t getBomba_szomszedok() const;
 
     /// @brief Teszteléshez szükséges
     /// @return Mindig hamis értékkel tér vissza
-    bool IsBomb() const override{
-        return false;
-    }
+    bool IsBomb() const override;
+
 };
 
 /// @brief Megvizsgálja, hogy az adott mező bomba-e

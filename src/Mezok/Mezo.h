@@ -29,38 +29,17 @@ public:
 
     /// @brief A mezőre vonatkozó kattintásokat keezeli
     /// @param event - Az esemény, amit le kell kezelni
-    void esemeny_kezel(sf::Event& event) {
-        if(event.mouseButton.button == sf::Mouse::Right){
-            jobb_klikk();
-        }
-        else if(event.mouseButton.button == sf::Mouse::Left){
-            bal_klikk();
-        }
-    }
+    void esemeny_kezel(sf::Event& event);
 
     /// @brief Ha balkattintás történt a mezőre
-    void bal_klikk(){
-        if(m_allapot == felfedetlen){
-            m_allapot = felfedett;
-            ramleptel();
-        }
-    }
+    void bal_klikk();
 
     /// @brief Ha jobb kattintás történt a mezőre
-    void jobb_klikk(){
-        if(m_allapot == flagged){
-            m_allapot = felfedetlen;
-        }
-        else if(m_allapot == felfedetlen){
-            m_allapot = flagged;
-        }
-    }
+    void jobb_klikk();
 
     /// @brief Teszteléshez szükséges getter
     /// @return A mező aktuális állapotát adja vissza
-    MezoAllapot getAllapot() const{
-        return m_allapot;
-    }
+    MezoAllapot getAllapot() const;
 
     /// @brief Teszteléshez szükséges
     /// @return Visszaadja, hogy a mező bomba-e (true), vagy sem (false)
@@ -68,15 +47,7 @@ public:
 
     /// @brief A mezőt jeleníti meg (függetlenül a specifikálktabb típusától), ha flagged, vagy felfedetlen
     /// @param Az ablak, amire a megjelenítés történik
-    virtual void megjelenit(sf::RenderWindow& target) const{
-        if(m_allapot == flagged){
-            target.draw(m_alap);
-            target.draw(m_flag);
-        }
-        if(m_allapot == felfedetlen){
-            target.draw(m_alap);
-        }
-    }
+    virtual void megjelenit(sf::RenderWindow& target) const;
 
 
     /// brief Destruktor

@@ -5,9 +5,10 @@
 #ifndef NHF_JATEKALLAPOT_H
 #define NHF_JATEKALLAPOT_H
 enum JatekAllapot{
-    jatek,
     gyozelem,
-    vereseg
+    vereseg,
+    jatek
+
 };
 
 #endif //NHF_JATEKALLAPOT_H

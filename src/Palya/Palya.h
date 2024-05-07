@@ -61,26 +61,15 @@ public:
 
     /// @brief A tesztelést segítő getter
     /// @return A mezők heterogén kollekcióját adja vissza
-    const std::array<std::array<Mezo*, 14>, 14>& getPalya() const{
-        return mezok;
-    }
-    /// @brief A tesztelést segítő getter
-    /// @return A mezők heterogén kollekcióját adja vissza
-    std::array<std::array<Mezo*, 14>, 14>& getPalya(){
-        return mezok;
-    }
+    std::array<std::array<Mezo*, 14>, 14>& getPalya();
 
     /// @brief Getter a teszteléshez
     /// \return Mennyi a még fel nem fedett üres mezők száma
-    int getUres() const{
-        return ures_mezok;
-    }
+    int getUres() const;
 
     /// @brief Getter a teszteléshez
     /// @return Bomba mező lett-e felfedve
-    bool getFelrobbant() const{
-        return felrobbant;
-    }
+    bool getFelrobbant() const;
 
     /// @brief Destruktor, egyesével végigmegy a tömbön és a mezőket felszabadítja
     ~Palya();

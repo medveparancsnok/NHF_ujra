@@ -1,6 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+
+/// EZEKET KELLENE A PALYA KONSTRUKTORNAK HASZNÁLNI
+
+
 /// @brief Megjelenítéshez szükséges Sprite betöltését végzi
 /// @param sprite - ahova be kell tölteni
 /// @param nev - textúra neve, ami a Sprite-ra kerül

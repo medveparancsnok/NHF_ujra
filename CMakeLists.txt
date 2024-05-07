@@ -25,8 +25,9 @@ add_executable(NHF
         src/Mezok/Ures.cpp
         src/Palya/Random/palya_feltoltes/Random.cpp
         src/onallo_logikai/matematikai_fuggvenyek.cpp
-        src/test/jatek_test.cpp
+        src/main.cpp
         src/Segedosztalyok/Grafikai/MenuFelirat.cpp
+        src/test/test_segedlet.h
 )
 
 
