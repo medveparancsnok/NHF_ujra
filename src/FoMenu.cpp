@@ -2,9 +2,9 @@
 // Created by Otthon on 2024. 04. 15..
 //
 
-#include "FoMenu.h"
-#include "../onallo_logikai/matematikai_fuggvenyek.h"
-#include "Jatek.h"
+#include "../headerek/FoMenu.h"
+#include "../headerek/matematikai_fuggvenyek.h"
+#include "../headerek/Jatek.h"
 
 void FoMenu::esemeny_kezel(sf::Event& esemeny){
     if (esemeny.mouseButton.button == sf::Mouse::Left) {

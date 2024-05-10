@@ -2,7 +2,7 @@
 // Created by bened on 2024. 04. 05..
 //
 
-#include "Random.h"
+#include "../headerek/Random.h"
 
 size_t random(size_t a, size_t b){
     static std::random_device eszkoz;

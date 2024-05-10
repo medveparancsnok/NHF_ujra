@@ -1,21 +1,19 @@
 
 
 
-#include "Palya.h"
-#include "../onallo_logikai/grafikai_fuggvenyek.h"
+#include "../headerek/Palya.h"
+#include "../headerek/grafikai_fuggvenyek.h"
 
 Palya::Palya(Nehezseg nehezseg){
     felrobbant = false;
 
-    //GRAFIKA BETÖLTÉS IS KÜLÖN FGV-BE MEGY
-
-    if(!flagTextura.loadFromFile("Flag.png")){
+    if(!flagTextura.loadFromFile("resource/Flag.png")){
         throw "Texturat nem sikerult betolteni";
     }
     flagSprite.setTexture(flagTextura);
     flagSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
 
-    if(!bombaTextura.loadFromFile("Bomba.png")){
+    if(!bombaTextura.loadFromFile("resource/Bomba.png")){
         throw "Texturat nem sikerult betolteni";
     }
     bombaSprite.setTexture(bombaTextura);
@@ -95,7 +93,7 @@ void Palya::bomba_init(const Nehezseg& nehezseg) {
 
 
 void Palya::ures_init() {
-    if(!font.loadFromFile("arial.ttf")){
+    if(!font.loadFromFile("resource/arial.ttf")){
         throw "Nem sikerult Font-ot betolteni";
     }
     for(size_t i = 0; i < 14; i++) {

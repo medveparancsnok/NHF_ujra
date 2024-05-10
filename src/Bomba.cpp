@@ -1,6 +1,6 @@
 
 
-#include "Bomba.h"
+#include "../headerek/Bomba.h"
 
 
 void Bomba::megjelenit(sf::RenderWindow& target) const{

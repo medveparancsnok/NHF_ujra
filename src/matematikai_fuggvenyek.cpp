@@ -1,4 +1,4 @@
-#include "matematikai_fuggvenyek.h"
+#include "../headerek/matematikai_fuggvenyek.h"
 
 
 

@@ -5,15 +5,15 @@
 #ifndef NHF_UJRA_PALYA_H
 #define NHF_UJRA_PALYA_H
 
-#include "../Mezok/Bomba.h"
-#include "../Mezok/Mezo.h"
-#include "../Mezok/Ures.h"
+#include "Bomba.h"
+#include "Mezo.h"
+#include "Ures.h"
 #include <array>
-#include "../Segedosztalyok/Enumok/Nehezseg.h"
-#include "../Segedosztalyok/Enumok/Jatekallapot.h"
-#include "Random/palya_feltoltes/Random.h"
-#include "../Segedosztalyok/Enumok/Jatekallapot.h"
-#include "../onallo_logikai/matematikai_fuggvenyek.h"
+#include "Nehezseg.h"
+#include "Jatekallapot.h"
+#include "Random.h"
+#include "Jatekallapot.h"
+#include "matematikai_fuggvenyek.h"
 #include <iostream>
 
 class Mezo;
@@ -34,11 +34,15 @@ class Palya {
     sf::Font font;
 
 public:
-    /// @brief Konstruktor, ami a pályán határozza meg véletlenszerűen, hogy mely mezők legyenek bombák és melyek üresek
+    /// @brief Konstruktor, ami a pályán határozza meg véletlenszerűen, hogy mely mezők legyenek bombák és melyek üresek, legelőször
+    /// a mezők grafikus megjelenítéséhez szükséges adattagokat inicializálja, majd a bombákat a bomba_init függvénnyel
+    /// ezt követően az üres mezőket az ures_init() függvénnyel, amjd pedig, amennyiben nem tesztmódban fut a program, akkor
+    /// meghívja a kezdes() függvényt
     /// \param nehezseg - ennek megfelelő nehézségű pálya generálódik
     Palya(Nehezseg nehezseg);
 
-    /// @brief A bombákat helyezi le a pályára, ahova nem kerül bomba, az egyelőre NULL pointer lesz
+    /// @brief A bombákat helyezi le a pályára, ahova nem kerül bomba, az egyelőre NULL pointer lesz, a bombákra mutató pointereket
+    /// eltárolja az std::vector<Mezo*> bombak adattagjában
     /// @param nehezseg - ennek megfelelő számú bomba generálódik
     /// @param bombak - ebben tárolja el a függvény a Bomba mezőkre mutató pointereket, ami később, az üres mezők inicializálásakor kelleni fog
     void bomba_init(const Nehezseg& nehezseg);

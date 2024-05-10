@@ -2,7 +2,7 @@
 // Created by Otthon on 2024. 04. 16..
 //
 
-#include "Mezo.h"
+#include "../headerek/Mezo.h"
 
 
 void Mezo::esemeny_kezel(sf::Event& event) {

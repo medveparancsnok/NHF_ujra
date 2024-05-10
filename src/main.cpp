@@ -1,5 +1,5 @@
 
-#include "Alkalmazas/Alkalmazas.h"
+#include "../headerek/Alkalmazas.h"
 
 
 

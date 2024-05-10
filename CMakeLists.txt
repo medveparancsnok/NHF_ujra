@@ -1,50 +1,85 @@
-cmake_minimum_required(VERSION 3.24)
-project(NHF)
+cmake_minimum_required(VERSION 3.23)
+project(jatek VERSION 0.1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include(FetchContent)
-FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG        v1.14.0
+find_package(GTest QUIET)
+if (NOT GTest_FOUND)
+    include(FetchContent)
+    FetchContent_Declare(
+            googletest
+            GIT_REPOSITORY https://github.com/google/googletest.git
+            GIT_TAG v1.14.0
+    )
+    FetchContent_MakeAvailable(googletest)
+endif ()
+
+function(add_compile_options target)
+    target_compile_options(${target}
+            PRIVATE
+            -Werror
+            -Wall
+            -Wextra
+            -Wpedantic
+            -Wconversion
+    )
+
+endfunction()
+
+add_library(${PROJECT_NAME}_lib)
+target_include_directories(${PROJECT_NAME}_lib
+        PUBLIC
+        include
 )
-FetchContent_MakeAvailable(googletest)
-
-add_executable(NHF
-        src/Menuk/FoMenu.cpp
-        src/onallo_logikai/matematikai_fuggvenyek.h
-        src/Segedosztalyok/Grafikai/Felirat.cpp
-        src/Alkalmazas/Alkalmazas.cpp
-        src/Mezok/Bomba.cpp
-        src/Menuk/Jatek.cpp
-        src/onallo_logikai/grafikai_fuggvenyek.cpp
-        src/Menuk/Menu.cpp
-        src/Mezok/Mezo.cpp
-        src/Palya/Palya.cpp
-        src/Mezok/Ures.cpp
-        src/Palya/Random/palya_feltoltes/Random.cpp
-        src/onallo_logikai/matematikai_fuggvenyek.cpp
-        src/main.cpp
-        src/Segedosztalyok/Grafikai/MenuFelirat.cpp
-        src/test/test_segedlet.h
-)
-
-
-target_compile_options(NHF
+target_sources(${PROJECT_NAME}_lib
         PRIVATE
-        -Werror -Wall -Wextra -Wpedantic -Wconversion
+        src/Alkalmazas.cpp
+        src/Bomba.cpp
+        src/Felirat.cpp
+        src/FoMenu.cpp
+        src/grafikai_fuggvenyek.cpp
+        src/Jatek.cpp
+        src/matematikai_fuggvenyek.cpp
+        src/Menu.cpp
+        src/MenuFelirat.cpp
+        src/Mezo.cpp
+        src/Palya.cpp
+        src/Random.cpp
+        src/Ures.cpp
+)
+add_compile_options(${PROJECT_NAME}_lib)
+
+add_executable(${PROJECT_NAME})
+target_sources(${PROJECT_NAME}
+        PRIVATE
+        src/main.cpp
+)
+add_compile_options(${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME}
+        PRIVATE
+        ${PROJECT_NAME}_lib
 )
 
-set(SFML_STATIC_LIBRARIES TRUE)
-set(SFML_DIR D:/SFML/SFML-2.6.1/lib/cmake/SFML)
-find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
+enable_testing()
 
-target_link_libraries(NHF sfml-system sfml-window sfml-graphics sfml-audio)
-
-target_link_libraries(${PROJECT_NAME}
+add_executable(${PROJECT_NAME}_test)
+target_sources(${PROJECT_NAME}_test
+        PRIVATE
+        test/jatek_test.cpp
+)
+add_compile_options(${PROJECT_NAME}_test)
+target_link_libraries(${PROJECT_NAME}_test
+        PRIVATE
+        ${PROJECT_NAME}_lib
         GTest::gtest_main
 )
 
-target_compile_definitions(NHF PRIVATE
-)
+include(GoogleTest)
+gtest_discover_tests(${PROJECT_NAME}_test)
+
+set(BUILD_SHARED_LIBS OFF)
+set(SFML_DIR D:/SFML/SFML-2.6.1/lib/cmake/SFML)
+find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
+
+target_link_libraries(${PROJECT_NAME}_lib PUBLIC sfml-system sfml-window sfml-graphics sfml-audio)

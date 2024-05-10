@@ -19,11 +19,13 @@ public:
     /// \param kezdo - a mező kiinduló állapota
     Bomba(bool& felrobbant, sf::Sprite& bomba_sprite, sf::Sprite& m_flag, sf::RectangleShape& m_alap, MezoAllapot kezdo = felfedetlen) : Mezo(m_flag, m_alap, kezdo), bomba_sprite(bomba_sprite), felrobbant(felrobbant){}
 
-    /// @brief A bomba mező megjelenítését végzi
+    /// @brief A bomba mező megjelenítését végzi, annyiban különbözik a Mezo megjelenítésétől ,hogy ha fel van fedve, akkor
+    /// kirajzolódik egy bomba_sprite a képernyőre
     /// \param target - erre történik a mező kirajzolása
     void megjelenit(sf::RenderWindow& target) const override;
 
-    /// @brief Kezeli, hogy mi történik, ha a játékos rálép egy ilyen bomba mezőre
+    /// @brief Kezeli, hogy mi történik, ha a játékos rálép egy Bomba mezőre, ekkor az az adattagja, mely tárolja a Palya
+    /// objektum felrobbant adattagjának referenciáját igazzá válik
     void ramleptel() override;
 
     /// @brief Teszteléshez szükséges

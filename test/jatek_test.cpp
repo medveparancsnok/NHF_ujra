@@ -1,7 +1,7 @@
 
-#include "../Palya/Palya.h"
+#include "../headerek/Palya.h"
 #include "SFML/Graphics.hpp"
-#include "test_segedlet.h"
+#include "../headerek/test_segedlet.h"
 
 
 #include <gtest/gtest.h>

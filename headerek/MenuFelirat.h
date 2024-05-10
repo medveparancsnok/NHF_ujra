@@ -9,7 +9,7 @@ class MenuFelirat: public Felirat {
     sf::RectangleShape hatter;
 
 public:
-    /// @brief Konstruktor
+    /// @brief Konstruktor, az alább felsorolt paraméterekkel inicializálja saját adattagjait
     ///  @param font - a szöveg betűtípusa
     ///  @param cimke - maga a szöveg
     ///  @param CharSize - a szöveg karaktermérete
@@ -27,7 +27,8 @@ public:
     /// \return Belül van (true), kívül van (false)
     bool belul(const sf::Vector2f&);
 
-    /// @brief A felirat megjelenítését végzi
+    /// @brief A felirat megjelenítését végzi, mégozzá úgy, hogy először a háttér jelenik meg, majd a felirat rárajzolódik,
+    /// különben a háttér eltakarná
     /// @param ablak - erre rajzolja ki magát
     void megjelenit(sf::RenderWindow& ablak) const;
 };
