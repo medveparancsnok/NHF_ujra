@@ -30,7 +30,7 @@ public:
     /// \param m_alap - a felfedetlen/felfedett üres mező megjelenítéséhez szükséges
     /// \param font - a szomszédok számának megjelenítéséhez szükséges
     /// \param kezdo - a mező kiindulási állapota
-    Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,unsigned long long sor,unsigned long long oszlop, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
+    Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,size_t sor,size_t oszlop, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
 
     /// @brief Beállítja a mező bombaszomszédainak számát a paraméterül kapott pointertömb alapján, a működése annyi a függvénynek,
     /// @brief hogy minden egyes szomszédjára az adott mezőnek (szomszédok indexeit a saját indexéből határozom meg) megvizsgálja, hogy az
