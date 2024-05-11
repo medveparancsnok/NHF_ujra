@@ -3,8 +3,8 @@
 
 
 
-unsigned long long eger_lekepezes(int mit, int eltolas, int mennyivel){
-    return (unsigned long long)((mit-eltolas) / mennyivel);
+size_t eger_lekepezes(int mit, int eltolas, int mennyivel){
+    return (size_t)((mit-eltolas) / mennyivel);
 }
 
 bool valid_idx(int idx){
