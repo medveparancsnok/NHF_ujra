@@ -10,6 +10,7 @@
 #include <array>
 
 
+
 /// @brief Osztály, mely a játékban a bomba nélküli, úgymond üres mezőket reprezentálja
 class Ures: public Mezo {
     std::array<std::array<Mezo*, 14>, 14>& mezok;
@@ -31,21 +32,29 @@ public:
     /// \param kezdo - a mező kiindulási állapota
     Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,unsigned long long sor,unsigned long long oszlop, sf::Sprite& m_flag,  sf::RectangleShape& m_alap, sf::Font& font, MezoAllapot kezdo = felfedetlen);
 
-    /// @brief Beállítja a mező bombaszomszédainak számát
+    /// @brief Beállítja a mező bombaszomszédainak számát a paraméterül kapott pointertömb alapján, a működése annyi a függvénynek,
+    /// @brief hogy minden egyes szomszédjára az adott mezőnek (szomszédok indexeit a saját indexéből határozom meg) megvizsgálja, hogy az
+    /// @brief adott szomszédra mutató pointer az benne van-e a bombakra mutató pointertömbben, ha igen, akkor növeli bomba_szomszedok-nak
+    ///@brief a számát, különben nem. Ahhoz hogy benne van-e az adott Mezo objektumra mutató pointer a bombak tömbjében
+    ///@brief egy segédfüggvényt használok (bool Eleme(const std::vector<Mezo*>& bombak, const Mezo* vizsgalando))
     /// \param bombak - a pályán lévő bombákra mutató pointerek tömbje
     void setSzomszedok(const std::vector<Mezo*>& bombak);
 
-    /// @brief Kezeli, ha a játékos rálép egy üres mezőre
+    /// @brief Kezeli, ha a játékos rálép egy üres mezőre, ures_mezok számláló referenciáját eggyel csökkenti, és meghívja a
+    ///@brief felderito_BFS() függvényt
     void ramleptel() override;
 
     /// @brief Ha a játékos olyan üres mezőre lép, melynek nincsenek bombaszomszédai, akkor neki minden szomszédja felfedetté válik
+    ///@brief ez a függvény a hagyományos értelemben véve nem rekurzív, de mégis az, mivel azáltal, hogy a szomszédok felfedetté válnak
+    ///@brief meghívódik mindegyiküknek a ramleptel() függvénye, ez pedig meghívhatja ismét a felderito_BFS() függvényt
     void felderito_BFS();
 
-    /// Az üres mező megjelenítését végzi
+    /// Az üres mező megjelenítését végzi, annak megfelelően rajzolódik ki, hogy éppen milyen állapotban van
     /// \param target - erre történik a kirajzolás
     void megjelenit(sf::RenderWindow& target) const override ;
 
-    /// @brief Ha az üres mező felfedetté válik, akkor a megjelnítését ő állítja át
+    /// @brief Ha az üres mező felfedetté válik, akkor a megjelnítését ő állítja át, hogy a háttere fehér legyen és ha vannak
+    /// @brief bomba szomszédai, akkor az is megjelenik rajta feketével, hogy mennyi
     void megjelenit_atallit();
 
     /// @breif Visszaadja az adott üres mező bombaszomszédainak a számát

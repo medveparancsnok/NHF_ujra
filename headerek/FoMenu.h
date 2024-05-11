@@ -10,6 +10,7 @@
 #include <iostream>
 
 
+
 /// @brief Osztály, ami a játéknehézség kiválasztását kezeli
 class FoMenu : public Menu{
     std::stack<Menu *> &m_stack;

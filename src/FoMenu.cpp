@@ -6,6 +6,7 @@
 #include "../headerek/matematikai_fuggvenyek.h"
 #include "../headerek/Jatek.h"
 
+
 void FoMenu::esemeny_kezel(sf::Event& esemeny){
     if (esemeny.mouseButton.button == sf::Mouse::Left) {
         sf::Vector2f kattintas((float)esemeny.mouseButton.x, (float)esemeny.mouseButton.y);

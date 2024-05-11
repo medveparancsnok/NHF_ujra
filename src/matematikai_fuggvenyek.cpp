@@ -2,6 +2,7 @@
 
 
 
+
 unsigned long long eger_lekepezes(int mit, int eltolas, int mennyivel){
     return (unsigned long long)((mit-eltolas) / mennyivel);
 }

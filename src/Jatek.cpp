@@ -2,6 +2,7 @@
 
 #include "../headerek/Jatek.h"
 
+
 Jatek::Jatek(std::stack<Menu *>& m_stack, Nehezseg nehezseg, sf::Font& font) : m_stack(m_stack), palya(nehezseg), vissza(font, "VISSZA", 25,sf::Color::Black, sf::Vector2f(5,565), sf::Text::Style::Underlined, sf::Vector2f(95,30), sf::Vector2f(0, 570)),
 vege(font, "GYOZTEL", 70, sf::Color::Red, sf::Vector2f(200, 200), sf::Text::Bold){
     jatekallapot = jatek;

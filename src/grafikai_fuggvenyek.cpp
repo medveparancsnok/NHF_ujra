@@ -1,6 +1,7 @@
 #include "../headerek/grafikai_fuggvenyek.h"
 
 
+
 sf::RectangleShape mezo_alap_betolt(){
     sf::RectangleShape betoltendo;
 

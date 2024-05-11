@@ -4,6 +4,7 @@
 
 #ifndef NHF_TEST_SEGEDLET_H
 #define NHF_TEST_SEGEDLET_H
+
 #include <iostream>
 #include <vector>
 

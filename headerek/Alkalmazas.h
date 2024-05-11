@@ -2,7 +2,9 @@
 
 #ifndef NHF_UJRA_ALKALMAZAS_H
 #define NHF_UJRA_ALKALMAZAS_H
+
 #include "FoMenu.h"
+
 
 
 /// @brief Osztály, ami a játék grafikus megjelenítésért felelős és a játék, illetve menü közötti váltást teszi lehetővé

@@ -4,8 +4,22 @@
 #include "../headerek/Palya.h"
 #include "../headerek/grafikai_fuggvenyek.h"
 
+
 Palya::Palya(Nehezseg nehezseg){
     felrobbant = false;
+
+    grafika_init();
+
+    bomba_init(nehezseg);
+
+    ures_init();
+
+    if(nehezseg != teszt) {
+        kezdes();
+    }
+}
+
+void Palya::grafika_init(){
 
     if(!flagTextura.loadFromFile("resource/Flag.png")){
         throw "Texturat nem sikerult betolteni";
@@ -20,14 +34,6 @@ Palya::Palya(Nehezseg nehezseg){
     bombaSprite.setTextureRect(sf::IntRect(0,0, 40, 40));
 
     mezo_alap = mezo_alap_betolt();
-
-    bomba_init(nehezseg);
-
-    ures_init();
-
-    if(nehezseg != teszt) {
-        kezdes();
-    }
 }
 
 void Palya::bomba_init(const Nehezseg& nehezseg) {

@@ -42,24 +42,34 @@ public:
     Palya(Nehezseg nehezseg);
 
     /// @brief A bombákat helyezi le a pályára, ahova nem kerül bomba, az egyelőre NULL pointer lesz, a bombákra mutató pointereket
-    /// eltárolja az std::vector<Mezo*> bombak adattagjában
+    /// eltárolja az std::vector<Mezo*> bombak adattagjában, továbbá, ha az adott mező bomba, akkor csökkenti eggyel
+    /// az ures_mezok szamlalot eggyel
     /// @param nehezseg - ennek megfelelő számú bomba generálódik
     /// @param bombak - ebben tárolja el a függvény a Bomba mezőkre mutató pointereket, ami később, az üres mezők inicializálásakor kelleni fog
     void bomba_init(const Nehezseg& nehezseg);
 
-    /// @brief Az ures mezőket inicializálja,
+    /// @brief A pálya által tartalmazott mezők megjelenítéséhez szükséges eszközöket tölti be
+    void grafika_init();
+
+    /// @brief Az ures mezőket inicializálja, úgy, hogy végig megy ismét a pályán és ahol NULL pointer volt, ott foglal egy
+    /// új Ures mezőre mutató pointert dinamikusan, megfelelő paraméterezéssel, továbbá az adott mező setSzomszedok függvényét is
+    /// meghívja, ha az adott mező nem szomszédos senkivel, akkor a mező indexeit eltárolja a szomszed_nelkuliek
+    /// tömbjében
     /// @param bombak - ez alapján kerül beállításra az adott ures mező bombaszomszédainak száma
     void ures_init();
 
-    /// @brief A játék legelején felfed egy kis részletet a játéból
+    /// @brief A játék legelején felfed egy kis részletet a játéból, a felfedendő mező random kerül kiválasztásra a
+    /// szomszed_nelkuliek tombbol
     void kezdes();
 
-    /// @brief A bejövő eseményt a megfelelő mezőnek kidelegálja
+    /// @brief A bejövő eseményt a megfelelő mezőnek kidelegálja, ha a felrobbant adattagja igaz, akkor vereséggel tér vissza, ha
+    /// az ures_mezok adattagja egyenlő a nullával, akkor győzelemmel tér vissza, különben játék állapottal tér vissza
     /// @param event
     /// @return A visszatérési értékében jelzi a Jatek osztálynak, hogy az adott esemény után a játékállapot mi lett
     JatekAllapot esemeny_kezel(sf::Event& event);
 
-    /// @brief A pálya megjelenítését végzi a paraméterül kapott ablakra
+    /// @brief A pálya megjelenítését végzi a paraméterül kapott ablakra, egy kettős forciklusban minden egyes általa
+    /// tartalmazott mezőnek meghívja a megjelenítő függvényét
     /// @param target - Erre rajzol
     void megjelenit(sf::RenderWindow& target);
 

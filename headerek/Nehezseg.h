@@ -5,6 +5,7 @@
 #ifndef NHF_UJRA_NEHEZSEG_H
 #define NHF_UJRA_NEHEZSEG_H
 
+
 enum Nehezseg{
     konnyu,
     kozepes,

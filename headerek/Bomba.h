@@ -6,6 +6,7 @@
 #define NHF_UJRA_BOMBA_H
 #include "Mezo.h"
 
+
 /// @brief Osztály, mely a játékban az olyan mezőket reprezentálja, melyek bombák
 class Bomba: public Mezo {
     sf::Sprite bomba_sprite;

@@ -4,7 +4,9 @@
 
 #ifndef MINESWEEPER_RANDOM_H
 #define MINESWEEPER_RANDOM_H
+
 #include <random>
+
 
 /// @brief A két paraméterül kapott szám között generál egy random számot, azt adja vissza
 /// \param a - az alsóhatár

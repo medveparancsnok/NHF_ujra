@@ -4,6 +4,7 @@
 
 #ifndef NHF_JATEKALLAPOT_H
 #define NHF_JATEKALLAPOT_H
+
 enum JatekAllapot{
     gyozelem,
     vereseg,

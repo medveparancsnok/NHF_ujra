@@ -5,6 +5,7 @@
 #ifndef NHF_UJRA_MEZOALLAPOT_H
 #define NHF_UJRA_MEZOALLAPOT_H
 
+
 enum MezoAllapot{
     felfedetlen,
     flagged,

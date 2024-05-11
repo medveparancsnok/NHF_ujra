@@ -1,3 +1,4 @@
+
 #include <SFML/Graphics.hpp>
 
 /// @brief Egy kattintást leképez indexxé a pályán

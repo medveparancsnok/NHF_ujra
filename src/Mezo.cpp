@@ -5,6 +5,7 @@
 #include "../headerek/Mezo.h"
 
 
+
 void Mezo::esemeny_kezel(sf::Event& event) {
     if(event.mouseButton.button == sf::Mouse::Right){
         jobb_klikk();

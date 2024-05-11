@@ -13,6 +13,7 @@
 #include "matematikai_fuggvenyek.h"
 
 
+
 /// @brief Osztály, amely tartalmazza magát a játékot
 class Jatek: public Menu{
     std::stack<Menu *> &m_stack;

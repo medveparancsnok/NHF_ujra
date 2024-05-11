@@ -2,10 +2,12 @@
 
 #ifndef NHF_UJRA_MEZO_H
 #define NHF_UJRA_MEZO_H
+
 #include "MezoAllapot.h"
 #include <SFML/Graphics.hpp>
 #include <optional>
 #include "matematikai_fuggvenyek.h"
+
 
 /// @brief Osztály, pálya ilyen mezők heterogén kollekcióját tartalmazza, alaposztálya a bombának és az üres mezőnek
 

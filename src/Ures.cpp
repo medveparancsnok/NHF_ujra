@@ -2,6 +2,7 @@
 
 #include "../headerek/Ures.h"
 
+
 Ures::Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,size_t sor, size_t oszlop, sf::Sprite &m_flag, sf::RectangleShape &m_alap,
            sf::Font& font, MezoAllapot kezdo): Mezo(m_flag, m_alap, kezdo), mezok(mezok), ures_mezok(ures_mezok),sor(sor), oszlop(oszlop) , szomszedok(font, "0",20, sf::Color::Black, sf::Vector2f(0,0), sf::Text::Bold){}
 
@@ -56,7 +57,7 @@ void Ures::megjelenit(sf::RenderWindow& target) const{
     Mezo::megjelenit(target);
     if(m_allapot == felfedett){
         target.draw(m_alap);
-        if(szomszedok.getString() != "0") {
+        if(bomba_szomszedok != 0) {
             szomszedok.megjelenit(target);
         }
     }

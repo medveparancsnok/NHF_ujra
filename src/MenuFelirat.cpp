@@ -1,8 +1,6 @@
-//
-// Created by Otthon on 2024. 05. 03..
-//
 
 #include "../headerek/MenuFelirat.h"
+
 
 MenuFelirat::MenuFelirat(const sf::Font& font, const std::string& cimke , const unsigned int& CharSize , const sf::Color& c,
             const sf::Vector2<float>& szoveg_pos , const sf::Text::Style& stil, sf::Vector2f size, sf::Vector2f hatter_pos,

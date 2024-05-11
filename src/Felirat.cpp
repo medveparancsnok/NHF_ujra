@@ -4,6 +4,7 @@
 
 #include "../headerek/Felirat.h"
 
+
  Felirat::Felirat(const sf::Font& font, const std::string &cimke, const unsigned int &CharSize,
                           const sf::Color &c, const sf::Vector2<float> &szoveg_pos, const sf::Text::Style &stil)
                           {
