@@ -23,8 +23,7 @@ public:
     /// @param m_flag - A flag-elés megjelnítéséhez szükséges Sprite
     /// @param m_alap - A felfedetlen/felfedett mező megjelenítéséhez szükséges Háttér
     /// @param kezdo - A mezo  kezdeti állapota (mindig felfedetlen kezdetben)
-    Mezo(sf::Sprite& m_flag,  sf::RectangleShape& m_alap, MezoAllapot kezdo = felfedetlen): m_allapot(kezdo),
-    m_flag(m_flag), m_alap(m_alap){}
+    Mezo(sf::Sprite& m_flag,  sf::RectangleShape& m_alap, MezoAllapot kezdo = felfedetlen);
 
     /// @brief Mező típusától függően lekezeli, hogy mi történik, ha a mező felfedetté válik
     virtual void ramleptel() = 0;
@@ -32,7 +31,7 @@ public:
     /// @brief A mezőre vonatkozó kattintásokat kezeli, amennyiben bal kattintás történt a mezőre, akkor a bal_klikk() függvény
     /// hívódik meg, amennyiben pedig jobb kattintás történt a mezőre, akkor a jobb_klikk() függvényt hívja meg
     /// @param event - Az esemény, amit le kell kezelni
-    void esemeny_kezel(sf::Event& event);
+    void esemeny_kezel(sf::Event& esemeny);
 
     /// @brief Ha bal kattintás történt a mezőre, és a mező eddig felfedetlen volt, akkor felfedetté válik és meghívja az adott
     /// mező ramleptel() függvényét, egyébként figgyelmen kívül hagyja

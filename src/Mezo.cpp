@@ -5,12 +5,14 @@
 #include "../headerek/Mezo.h"
 
 
+Mezo::Mezo(sf::Sprite &m_flag, sf::RectangleShape &m_alap, MezoAllapot kezdo): m_allapot(kezdo),
+                                                                               m_flag(m_flag), m_alap(m_alap){}
 
-void Mezo::esemeny_kezel(sf::Event& event) {
-    if(event.mouseButton.button == sf::Mouse::Right){
+void Mezo::esemeny_kezel(sf::Event& esemeny) {
+    if(esemeny.mouseButton.button == sf::Mouse::Right){
         jobb_klikk();
     }
-    else if(event.mouseButton.button == sf::Mouse::Left){
+    else if(esemeny.mouseButton.button == sf::Mouse::Left){
         bal_klikk();
     }
 }

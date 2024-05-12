@@ -25,12 +25,7 @@ public:
     /// @brief Konstruktor, inicializálja a MenuFelirat adattagokat, amik gombként viselkednek
     /// \param stack - stack-es menükezeléshez szükséges, Menu objektumok heterogén kollekciója
     /// \param font - betűtípus a megjelenítéshez
-    explicit FoMenu(std::stack<Menu *> &stack, sf::Font& font) : m_stack(stack),
-    cim(font, "Valaszd ki a nehezseget", 40, sf::Color::Black, sf::Vector2<float>(175,10), sf::Text::Bold, sf::Vector2f(300, 75),sf::Vector2f(250, 140), sf::Color(192, 192, 192)),
-    konnyu_text(font, "KONNYU", 40, sf::Color::Black, sf::Vector2f(313.5,154.5), sf::Text::Bold,sf::Vector2f(300, 75),sf::Vector2f(250, 140), sf::Color::Green),
-    kozepes_text(font, "KOZEPES", 40, sf::Color::Black, sf::Vector2f(303.5,283.5), sf::Text::Bold,sf::Vector2f(300, 75),sf::Vector2f(250, 270), sf::Color(255,152,0)),
-    nehez_text(font, "NEHEZ", 40, sf::Color::Black, sf::Vector2f(328,413), sf::Text::Bold, sf::Vector2f(300, 75),sf::Vector2f(250, 400), sf::Color::Red), font(font){}
-
+    FoMenu(std::stack<Menu *> &stack, sf::Font& font);
     /// @brief Az eseménykezelést végzi, amennyiben az esemény egy bal egérgomb lenyomás volt, akkor eltárolja a kattintás
     /// koordinátáit és sorban odaadja a megfelelő nehézség "gomboknak", hogy vizsgálják meg rájuk kattintottak-e, ha igen,
     /// akkor annak a nehézségnek megfelelő Jatek objektum kerül a stack tetejére
