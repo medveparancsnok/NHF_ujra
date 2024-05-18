@@ -1,6 +1,7 @@
 
 
 #include "../headerek/Ures.h"
+#include <iostream>
 
 
 Ures::Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,size_t sor, size_t oszlop, sf::Sprite &m_flag, sf::RectangleShape &m_alap,
@@ -8,8 +9,8 @@ Ures::Ures(std::array<std::array<Mezo*, 14>, 14>& mezok, int& ures_mezok,size_t 
 
 
 void Ures::ramleptel() {
+    ures_mezok -= 1;
     megjelenit_atallit();
-    ures_mezok--;
     if(bomba_szomszedok == 0){
         felderito_BFS();
     }

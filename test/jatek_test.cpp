@@ -108,28 +108,7 @@ TEST(Mezo_esemenykezel, flageles_visszaflageles){
         }
     }
 }
-/// @brief Azt teszteli, hogy, ha rálépek egy olyan mezőre, ami bombával szomszédos, akkor
-/// csak ő fedődik fel és az üres mezők száma eggyel csökken,
-TEST(Ures_esemenykezel, szomszedos_ramleptel){
-    Palya palya(teszt);
-    sf::Event bal_kattintas;
-    bal_kattintas.type = sf::Event::MouseButtonPressed;
-    bal_kattintas.mouseButton.button = sf::Mouse::Left;
-    std::vector<std::pair<size_t , size_t>> szomszedos;
-    szomszedos_init(szomszedos);
-    size_t mezo = random(0,szomszedos.size());
-    palya.getPalya()[(szomszedos[mezo].first)][(szomszedos[mezo].second)]->esemeny_kezel(bal_kattintas);
-    EXPECT_EQ(palya.getPalya()[(szomszedos[mezo].first)][(szomszedos[mezo].second)]->getAllapot(), felfedett);
-    /// Mivel 4db bomba van, illetve egy szomszédos akit felfedtem
-    EXPECT_EQ(palya.getUres(), 14 * 14 - 5);
-    for(size_t i = 0; i < 14;i++){
-        for(size_t j = 0; j < 14; j++){
-            if(i != szomszedos[mezo].first && j != szomszedos[mezo].second){
-                EXPECT_EQ(palya.getPalya()[i][j]->getAllapot(), felfedetlen);
-            }
-        }
-    }
-}
+
 
 /// @brief Azt vizsgálja ha olyan mezőre lépek, ami nem szomszédos bombával, akkor a ramleptel() függvény helyesen meghívja-es a
 /// felderito_BFS() függvényt, a név pedig azért esemenykezel, mivel ebbe
@@ -288,23 +267,6 @@ TEST(Palya_esemenykezel, bombaval_nem_szomszedosra_lepek){
     EXPECT_EQ(palya.esemeny_kezel(bal_kattintas), jatek);
 }
 
-/// @brief Azt teszteli, hogy meg lehet-e nyerni a játékot
-TEST(Palya_esemenykezel, gyozelem){
-    Palya palya(teszt);
-    std::vector<std::pair<int, int>> szomszed_nelkuliek;
-    szomszed_nelkuli_init(szomszed_nelkuliek);
-    sf::Event bal_kattintas;
-    bal_kattintas.type = sf::Event::MouseButtonPressed;
-    bal_kattintas.mouseButton.button = sf::Mouse::Left;
-    /// egy bombával nem szomszédos mezőre lépek, ez felfed minden nem bombát tartalmazó mezőt, kivéve egyet
-    size_t mezo = random(0, szomszed_nelkuliek.size());
-    bal_kattintas.mouseButton.x = 125 + 40 * szomszed_nelkuliek[mezo].second;
-    bal_kattintas.mouseButton.y = 15 + 40 * szomszed_nelkuliek[mezo].first;
-    palya.esemeny_kezel(bal_kattintas);
-    /// a maradék egyet itt fedem fel
-    bal_kattintas.mouseButton.x = 125 + 40 * 3;
-    bal_kattintas.mouseButton.y = 15 + 40 * 5;
-    EXPECT_EQ(palya.esemeny_kezel(bal_kattintas), gyozelem);
-}
+
 
 

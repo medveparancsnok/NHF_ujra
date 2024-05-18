@@ -5,7 +5,7 @@
 #include "../headerek/grafikai_fuggvenyek.h"
 
 
-Palya::Palya(Nehezseg nehezseg){
+Palya::Palya(Nehezseg nehezseg): ures_mezok(1){
     felrobbant = false;
 
     grafika_init();
@@ -37,8 +37,6 @@ void Palya::grafika_init(){
 }
 
 void Palya::bomba_init(const Nehezseg& nehezseg) {
-    ures_mezok = 14 * 14;
-
     for(size_t i = 0; i < 14; i++){
         for(size_t j = 0; j< 14; j++){
             flagSprite.setPosition((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1));
@@ -50,7 +48,6 @@ void Palya::bomba_init(const Nehezseg& nehezseg) {
                     if((i == 5 && j == 2) || (i == 4 && j == 3) || (i == 5 && j == 4) || (i == 4 && j == 4)){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
                         bombak.push_back(mezok[i][j]);
-                        ures_mezok--;
                     }
                     else {
                         mezok[i][j] = NULL;
@@ -61,7 +58,6 @@ void Palya::bomba_init(const Nehezseg& nehezseg) {
                     if(random(0,9) == 0){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
                         bombak.push_back(mezok[i][j]);
-                        ures_mezok--;
                     }
                     else {
                         mezok[i][j] = NULL;
@@ -72,7 +68,6 @@ void Palya::bomba_init(const Nehezseg& nehezseg) {
                     if(random(0,6) == 0){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
                         bombak.push_back(mezok[i][j]);
-                        ures_mezok--;
                     }
                     else{
                         mezok[i][j] = NULL;
@@ -83,7 +78,6 @@ void Palya::bomba_init(const Nehezseg& nehezseg) {
                     if(random(0,4) == 0){
                         mezok[i][j] = new Bomba(felrobbant, bombaSprite, flagSprite, mezo_alap);
                         bombak.push_back(mezok[i][j]);
-                        ures_mezok--;
                     }
                     else{
                         mezok[i][j] = NULL;
@@ -105,6 +99,7 @@ void Palya::ures_init() {
     for(size_t i = 0; i < 14; i++) {
         for (size_t j = 0; j < 14; j++) {
             if(mezok[i][j] == NULL){
+                ures_mezok += 1;
                 flagSprite.setPosition((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1));
                 mezo_alap.setPosition(sf::Vector2f((float)(120 + j* 40 + 1), (float)(20 + i* 40 + 1)));
                 Ures* ures = new Ures(mezok, ures_mezok,i , j, flagSprite, mezo_alap, font);
